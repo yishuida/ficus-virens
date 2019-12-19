@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://www.mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="dev.daqiang.ficusvirens.root.infra.mapper.UserMapper">
 
-    <resultMap id="userBaseResultMap" type="dev.daqiang.ficusvirens.root.entity.User"
+    <resultMap id="userBaseResultMap" type="dev.daqiang.blog.domain.entity.User"
                extends="dev.daqiang.ficusvirens.root.infra.mapper.BaseEntityMapper.baseEntityResultMap">
         <id property="id" column="id" />
         <result property="username" column="username" />
@@ -10,13 +10,13 @@
 
     </resultMap>
 
-    <resultMap id="userResultMap" type="dev.daqiang.ficusvirens.root.entity.User" extends="userBaseResultMap">
-        <collection property="roles" ofType="dev.daqiang.ficusvirens.root.entity.Role" fetchType="lazy" column="{userId=id}"
+    <resultMap id="userResultMap" type="dev.daqiang.blog.domain.entity.User" extends="userBaseResultMap">
+        <collection property="roles" ofType="dev.daqiang.blog.domain.entity.Role" fetchType="lazy" column="{userId=id}"
                     select="dev.daqiang.ficusvirens.root.infra.mapper.RoleMapper.selectByUserId" javaType="ArrayList">
         </collection>
     </resultMap>
 
-    <resultMap id="userInfoResultMap" type="dev.daqiang.ficusvirens.root.entity.UserInfo"
+    <resultMap id="userInfoResultMap" type="dev.daqiang.blog.domain.entity.UserInfo"
                extends="dev.daqiang.ficusvirens.root.infra.mapper.BaseEntityMapper.baseEntityResultMap">
         <id property="id" column="id" />
         <result property="firstName" column="first_name" />
@@ -93,7 +93,7 @@
         DELETE FROM blog_sys_user_role WHERE user_id = #{userId} and role_id=#{roleId}
     </delete>
 
-    <insert id="insert" parameterType="dev.daqiang.ficusvirens.root.entity.User">
+    <insert id="insert" parameterType="dev.daqiang.blog.domain.entity.User">
         INSERT INTO blog_sys_user
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="username != null and username != ''">
@@ -194,7 +194,7 @@
         </trim>
     </insert>
 
-    <update id="update" parameterType="dev.daqiang.ficusvirens.root.entity.User">
+    <update id="update" parameterType="dev.daqiang.blog.domain.entity.User">
         UPDATE blog_sys_user
         <set>
             <if test="username != null">username=#{username},</if>

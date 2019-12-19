@@ -1,8 +1,13 @@
-package dev.daqiang.ficusvirens.root.entity;
+package dev.daqiang.ficusvirens.root.domain.entity;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+/**
+ *
+ * @author Vista-Yih
+ * @date 2019/12/19
+ */
 @EqualsAndHashCode(callSuper = true)
 @Data
 public class ThemeNode extends BaseEntity {

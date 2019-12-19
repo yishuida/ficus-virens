@@ -1,4 +1,4 @@
-package dev.daqiang.ficusvirens.root.entity;
+package dev.daqiang.ficusvirens.root.domain.entity;
 
 
 import lombok.Data;

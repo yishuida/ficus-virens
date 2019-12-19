@@ -1,7 +1,7 @@
 package dev.daqiang.ficusvirens.root.infra.service.impl;
 
-import dev.daqiang.blog.domain.entity.User;
-import dev.daqiang.blog.domain.entity.UserInfo;
+import dev.daqiang.ficusvirens.root.domain.entity.User;
+import dev.daqiang.ficusvirens.root.domain.entity.UserInfo;
 import dev.daqiang.ficusvirens.root.infra.mapper.UserMapper;
 import dev.daqiang.ficusvirens.root.infra.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +9,11 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ *
+ * @author Vista-Yih
+ * @date 2019/12/19
+ */
 @Service
 public class UserServiceImpl implements UserService {
 

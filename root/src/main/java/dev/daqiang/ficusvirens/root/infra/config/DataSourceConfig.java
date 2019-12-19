@@ -1,6 +1,6 @@
 package dev.daqiang.ficusvirens.root.infra.config;
 
-import dev.daqiang.blog.common.constant.DatabaseTypeEnum;
+
 import org.apache.ibatis.mapping.DatabaseIdProvider;
 import org.apache.ibatis.mapping.VendorDatabaseIdProvider;
 import org.mybatis.spring.SqlSessionFactoryBean;
@@ -15,6 +15,12 @@ import javax.sql.DataSource;
 import java.io.IOException;
 import java.util.Properties;
 
+import dev.daqiang.ficusvirens.root.common.constant.DatabaseTypeEnum;
+/**
+ *
+ * @author Vista-Yih
+ * @date 2019/12/19
+ */
 @Configuration
 public class DataSourceConfig {
 

@@ -1,9 +1,13 @@
-package dev.daqiang.ficusvirens.root.entity;
+package dev.daqiang.ficusvirens.root.domain.entity;
 
 import lombok.Data;
 
 import java.util.Objects;
 
+/**
+ * @author Vista-Yih
+ * @date 2019/12/19
+ */
 @Data
 public class Permission extends BaseEntity {
 

@@ -1,17 +1,16 @@
 package dev.daqiang.ficusvirens.root.infra.service.impl;
 
-import dev.daqiang.blog.domain.entity.User;
+import dev.daqiang.ficusvirens.root.domain.entity.User;
 import dev.daqiang.ficusvirens.root.infra.service.UserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.client.AutoConfigureWebClient;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest

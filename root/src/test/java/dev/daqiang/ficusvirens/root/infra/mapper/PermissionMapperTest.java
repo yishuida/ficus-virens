@@ -1,6 +1,6 @@
 package dev.daqiang.ficusvirens.root.infra.mapper;
 
-import dev.daqiang.blog.domain.entity.Permission;
+import dev.daqiang.ficusvirens.root.domain.entity.Permission;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +16,7 @@ import static org.junit.Assert.*;
  * @version 0.1.0
  * <p>
  * Created on 2019/10/23
- * Package dev.daqiang.ficusvirens.root.infra.mapper in ficus-virens-back
+ * Package dev.daqiang.blog.infra.mapper in ficus-virens-back
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest

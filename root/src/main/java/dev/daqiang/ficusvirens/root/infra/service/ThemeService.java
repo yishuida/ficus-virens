@@ -1,11 +1,13 @@
 package dev.daqiang.ficusvirens.root.infra.service;
 
-import dev.daqiang.blog.domain.entity.ThemeNode;
+import dev.daqiang.ficusvirens.root.domain.entity.ThemeNode;
 
 import java.util.List;
 
 /**
- * @author yidaq
+ *
+ * @author Vista-Yih
+ * @date 2019/12/19
  */
 public interface ThemeService {
 

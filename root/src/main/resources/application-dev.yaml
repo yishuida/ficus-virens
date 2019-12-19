@@ -16,7 +16,7 @@ logging:
 
 mybatis:
   check-config-location: false
-  type-aliases-package: dev.daqiang.ficusvirens.root.entity # 无效
+  type-aliases-package: dev.daqiang.blog.domain.entity # 无效
   configuration:
     database-id: mysql
   mapper-locations: classpath:mapper/*.xml

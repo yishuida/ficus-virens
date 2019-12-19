@@ -1,6 +1,6 @@
 package dev.daqiang.ficusvirens.root.infra.mapper;
 
-import dev.daqiang.blog.domain.entity.Permission;
+import dev.daqiang.ficusvirens.root.domain.entity.Permission;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;

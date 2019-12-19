@@ -1,6 +1,6 @@
 package dev.daqiang.ficusvirens.root.infra.mapper;
 
-import dev.daqiang.blog.domain.entity.ThemeNode;
+import dev.daqiang.ficusvirens.root.domain.entity.ThemeNode;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;

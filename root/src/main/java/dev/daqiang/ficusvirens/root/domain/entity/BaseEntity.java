@@ -1,18 +1,22 @@
-package dev.daqiang.ficusvirens.root.entity;
+package dev.daqiang.ficusvirens.root.domain.entity;
 
 import java.util.Date;
 
+/**
+ * @author Vista Yih
+ * @date 2019/12/19
+ */
 public abstract class BaseEntity {
-    protected Long createBy;
+    Long createBy;
 
-    protected Date createTime;
+    Date createTime;
 
-    protected Long lastUpdateBy;
+    Long lastUpdateBy;
 
-    protected Date lastUpdateTime;
+    Date lastUpdateTime;
 
 
-    protected Long objectVersionNumber;
+    Long objectVersionNumber;
 
     public Long getCreateBy() {
         return createBy;
