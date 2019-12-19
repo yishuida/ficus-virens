@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <property name="now" value="sysdate" dbms="oracle"/>
+    <property name="now" value="now()" dbms="mysql"/>
+    <property name="now" value="now()" dbms="postgresql"/>
+
+
+    <changeSet id="create-table-20190803-0001" author="vista yih" >
+
+        <createTable tableName="blog_post">
+            <column name="id" type="BIGINT" remarks="post id" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_blog_post_id" />
+            </column>
+
+            <column name="post_name" type="VARCHAR(1024)" remarks="post name">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="context" type="TEXT" remarks="context" />
+
+            <column name="create_by" type="BIGINT" remarks="create by" />
+            <column name="create_time" type="DATETIME" remarks="crate time" defaultValueDate="${now}"/>
+            <column name="last_update_by" type="BIGINT" remarks="last update by" />
+            <column name="last_update_time" type="DATETIME" remarks="last update time" defaultValueDate="${now}" />
+            <column name="object_version_number" type="BIGINT" remarks="object version number" defaultValueNumeric="1" />
+        </createTable>
+
+
+        <createTable tableName="blog_theme">
+            <column name="id" type="BIGINT" remarks="theme ID,primary key" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_blog_theme_id" />
+            </column>
+
+            <column name="theme_name" type="VARCHAR(512)" remarks="theme name">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="post_id" type="BIGINT" remarks="post id">
+                <constraints foreignKeyName="fk_blog_theme_to_blog_post_id" references="blog_post(id)"/>
+            </column>
+
+            <column name="lft" type="INT" remarks="left">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="rgt" type="INT" remarks="right">
+                <constraints nullable="false"/>
+            </column>
+            <column name="lev" type="INT" remarks="level" />
+
+            <column name="create_by" type="BIGINT" remarks="create by" />
+            <column name="create_time" type="DATETIME" remarks="crate time" defaultValueDate="${now}"/>
+            <column name="last_update_by" type="BIGINT" remarks="last update by" />
+            <column name="last_update_time" type="DATETIME" remarks="last update time" defaultValueDate="${now}" />
+            <column name="object_version_number" type="BIGINT" remarks="object version number" defaultValueNumeric="1" />
+        </createTable>
+
+
+    </changeSet>
+
+    <changeSet id="insert-data-20190803-0002" author="vista yih">
+        <insert tableName="blog_theme">
+            <column name="id" valueNumeric="1" />
+            <column name="theme_name" value="Food"/>
+            <column name="lft" valueNumeric="1" />
+            <column name="rgt" valueNumeric="18"/>
+        </insert>
+
+        <insert tableName="blog_theme">
+            <column name="id" valueNumeric="2" />
+            <column name="theme_name" value="Fruit"/>
+            <column name="lft" valueNumeric="2" />
+            <column name="rgt" valueNumeric="11"/>
+        </insert>
+
+        <insert tableName="blog_theme">
+            <column name="id" valueNumeric="3" />
+            <column name="theme_name" value="Red"/>
+            <column name="lft" valueNumeric="3" />
+            <column name="rgt" valueNumeric="6"/>
+        </insert>
+
+        <insert tableName="blog_theme">
+            <column name="id" valueNumeric="4" />
+            <column name="theme_name" value="Cherry"/>
+            <column name="lft" valueNumeric="4" />
+            <column name="rgt" valueNumeric="5"/>
+        </insert>
+
+        <insert tableName="blog_theme">
+            <column name="id" valueNumeric="5" />
+            <column name="theme_name" value="Yellow"/>
+            <column name="lft" valueNumeric="7" />
+            <column name="rgt" valueNumeric="10"/>
+        </insert>
+
+        <insert tableName="blog_theme">
+            <column name="id" valueNumeric="6" />
+            <column name="theme_name" value="Banana"/>
+            <column name="lft" valueNumeric="8" />
+            <column name="rgt" valueNumeric="9"/>
+        </insert>
+
+        <insert tableName="blog_theme">
+            <column name="id" valueNumeric="7" />
+            <column name="theme_name" value="Meat"/>
+            <column name="lft" valueNumeric="12" />
+            <column name="rgt" valueNumeric="17"/>
+        </insert>
+
+        <insert tableName="blog_theme">
+            <column name="id" valueNumeric="8" />
+            <column name="theme_name" value="Fruit"/>
+            <column name="lft" valueNumeric="13" />
+            <column name="rgt" valueNumeric="14"/>
+        </insert>
+
+        <insert tableName="blog_theme">
+            <column name="id" valueNumeric="9" />
+            <column name="theme_name" value="Pork"/>
+            <column name="lft" valueNumeric="15" />
+            <column name="rgt" valueNumeric="16"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

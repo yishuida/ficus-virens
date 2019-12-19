@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dev.daqiang.ficusvirens.root.infra.mapper.PostMapper">
+
+    <resultMap id="basePostResultMap" type="dev.daqiang.ficusvirens.root.entity.BaseEntity">
+        <result property="createBy" column="create_by" />
+        <result property="createTime" column="create_time" />
+        <result property="lastUpdateBy" column="last_update_by" />
+        <result property="lastUpdateTime" column="last_update_time" />
+        <result property="objectVersionNumber" column="object_version_number" />
+    </resultMap>
+
+
+</mapper>

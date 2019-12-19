@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dev.daqiang.ficusvirens.root.infra.mapper.RoleMapper">
+
+    <resultMap id="roleBaseResultMap" type="dev.daqiang.ficusvirens.root.entity.Role"
+               extends="dev.daqiang.ficusvirens.root.infra.mapper.BaseEntityMapper.baseEntityResultMap">
+        <id property="id" column="id" />
+        <result property="roleName" column="role_name" />
+    </resultMap>
+
+
+    <resultMap id="roleResultMap" type="dev.daqiang.ficusvirens.root.entity.Role" extends="roleBaseResultMap">
+        <collection property="permissions" ofType="dev.daqiang.ficusvirens.root.entity.Permission" fetchType="lazy"
+                    select="dev.daqiang.ficusvirens.root.infra.mapper.PermissionMapper.selectByRoleId" javaType="ArrayList"
+                    column="{roleId=id}">
+        </collection>
+    </resultMap>
+
+    <sql id="roleColumns">
+        ${alias}.id,
+        ${alias}.role_name,
+    </sql>
+    <insert id="insert">
+        INSERT INTO blog_sys_role
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="roleName != null and roleName != ''">
+                role_name,
+            </if>
+            <if test="createBy != null and createBy !=''">
+                create_by,
+            </if>
+            <if test="createTime != null and createTime !=''">
+                create_time,
+            </if>
+            <if test="lastUpdateBy != null and lastUpdateBy !=''">
+                last_update_by,
+            </if>
+            <if test="lastUpdateTime != null and lastUpdateTime !=''">
+                last_update_time,
+            </if>
+            <if test="objectVersionNumber != null and objectVersionNumber !=''">
+                object_version_number
+            </if>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="roleName != null and roleName != ''">
+                #{roleName},
+            </if>
+
+            <if test="createBy != null and createBy !=''">
+                #{createBy},
+            </if>
+            <if test="createTime != null and createTime !=''">
+                #{createTime},
+            </if>
+            <if test="lastUpdateBy != null and lastUpdateBy !=''">
+                #{lastUpdateBy},
+            </if>
+            <if test="lastUpdateTime != null and lastUpdateTime !=''">
+                #{lastUpdateTime},
+            </if>
+            <if test="objectVersionNumber != null and objectVersionNumber !=''">
+                #{objectVersionNumber}
+            </if>
+        </trim>
+    </insert>
+
+    <update id="update">
+        UPDATE blog_sys_role r
+        <set>
+            <if test="roleName != null">role_name=#{roleName},</if>
+            <if test="lastUpdateBy != null">last_update_by=#{lastUpdateBy},</if>
+            <if test="lastUpdateTime != null">last_update_time=#{lastUpdateTime},</if>
+            <if test="objectVersionNumber != null">object_version_number=#{objectVersionNumber}</if>
+        </set>
+        WHERE r.id = #{id}
+    </update>
+
+    <delete id="deleteById">
+        DELETE FROM blog_sys_role WHERE id=#{roleId}
+    </delete>
+
+    <select id="selectAll" resultMap="roleBaseResultMap">
+        SELECT
+        <include refid="roleColumns">
+            <property name="alias" value="r"/>
+        </include>
+        <include refid="dev.daqiang.ficusvirens.root.infra.mapper.BaseEntityMapper.baseEntityColumns">
+            <property name="alias" value="r"/>
+        </include>
+        FROM blog_sys_role r
+    </select>
+    <select id="selectById" resultMap="roleResultMap">
+        SELECT
+        <include refid="roleColumns">
+            <property name="alias" value="r"/>
+        </include>
+        <include refid="dev.daqiang.ficusvirens.root.infra.mapper.BaseEntityMapper.baseEntityColumns">
+            <property name="alias" value="r"/>
+        </include>
+        FROM blog_sys_role r
+        WHERE r.id=#{roleId}
+    </select>
+    <select id="selectByName" resultMap="roleResultMap">
+        SELECT
+        <include refid="roleColumns">
+            <property name="alias" value="r"/>
+        </include>
+        <include refid="dev.daqiang.ficusvirens.root.infra.mapper.BaseEntityMapper.baseEntityColumns">
+            <property name="alias" value="r"/>
+        </include>
+        FROM blog_sys_role r
+        WHERE r.role_name=#{roleName}
+    </select>
+
+    <select id="selectByUsername" resultMap="roleBaseResultMap">
+        SELECT
+        <include refid="dev.daqiang.ficusvirens.root.infra.mapper.RoleMapper.roleColumns">
+            <property name="alias" value="r"/>
+        </include>
+        <include refid="dev.daqiang.ficusvirens.root.infra.mapper.BaseEntityMapper.baseEntityColumns" >
+            <property name="alias" value="r"/>
+        </include>
+        FROM blog_sys_role r
+        INNER JOIN blog_sys_user_role ur ON ur.role_id = r.id
+        INNER JOIN blog_sys_user u ON u.id = ur.user_id
+        WHERE u.username = #{username}
+    </select>
+
+    <select id="selectByUserId" resultMap="roleResultMap">
+        SELECT
+        <include refid="dev.daqiang.ficusvirens.root.infra.mapper.RoleMapper.roleColumns">
+            <property name="alias" value="r"/>
+        </include>
+        <include refid="dev.daqiang.ficusvirens.root.infra.mapper.BaseEntityMapper.baseEntityColumns" >
+            <property name="alias" value="r"/>
+        </include>
+        FROM blog_sys_role r
+        INNER JOIN blog_sys_user_role ur ON ur.role_id = r.id
+        WHERE ur.user_id = #{userId}
+    </select>
+</mapper>

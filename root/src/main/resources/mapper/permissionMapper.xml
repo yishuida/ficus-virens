@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dev.daqiang.ficusvirens.root.infra.mapper.PermissionMapper">
+
+    <resultMap id="permissionResultMap" type="dev.daqiang.ficusvirens.root.entity.Permission"
+               extends="dev.daqiang.ficusvirens.root.infra.mapper.BaseEntityMapper.baseEntityResultMap">
+        <id property="id" column="id" />
+        <result property="permissionName" column="permission_name" />
+    </resultMap>
+
+    <sql id="permissionColumns">
+        ${alias}.id,
+        ${alias}.permission_name,
+    </sql>
+
+    <insert id="insert" >
+        INSERT INTO blog_sys_permission
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="permissionName != null and permissionName != ''">
+                permission_name,
+            </if>
+            <if test="createBy != null and createBy !=''">
+                create_by,
+            </if>
+            <if test="createTime != null and createTime !=''">
+                create_time,
+            </if>
+            <if test="lastUpdateBy != null and lastUpdateBy !=''">
+                last_update_by,
+            </if>
+            <if test="lastUpdateTime != null and lastUpdateTime !=''">
+                last_update_time,
+            </if>
+            <if test="objectVersionNumber != null and objectVersionNumber !=''">
+                object_version_number
+            </if>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="permissionName != null and permissionName != ''">
+                #{permissionName},
+            </if>
+
+            <if test="createBy != null and createBy !=''">
+                #{createBy},
+            </if>
+            <if test="createTime != null and createTime !=''">
+                #{createTime},
+            </if>
+            <if test="lastUpdateBy != null and lastUpdateBy !=''">
+                #{lastUpdateBy},
+            </if>
+            <if test="lastUpdateTime != null and lastUpdateTime !=''">
+                #{lastUpdateTime},
+            </if>
+            <if test="objectVersionNumber != null and objectVersionNumber !=''">
+                #{objectVersionNumber}
+            </if>
+        </trim>
+    </insert>
+
+    <update id="update">
+        UPDATE blog_sys_permission p
+        <set>
+            <if test="permissionName != null">permission_name=#{permissionName},</if>
+            <if test="lastUpdateBy != null">last_update_by=#{lastUpdateBy},</if>
+            <if test="lastUpdateTime != null">last_update_time=#{lastUpdateTime},</if>
+            <if test="objectVersionNumber != null">object_version_number=#{objectVersionNumber}</if>
+        </set>
+        WHERE p.id = #{id}
+    </update>
+
+    <delete id="deleteById">
+        DELETE FROM blog_sys_permission WHERE id=#{permissionId}
+    </delete>
+
+    <select id="selectAll" resultMap="permissionResultMap" >
+        SELECT
+            <include refid="permissionColumns">
+                <property name="alias" value="p"/>
+            </include>
+            <include refid="dev.daqiang.ficusvirens.root.infra.mapper.BaseEntityMapper.baseEntityColumns" >
+                <property name="alias" value="p"/>
+            </include>
+        FROM blog_sys_permission p
+    </select>
+
+    <select id="selectByRoleId" resultMap="permissionResultMap">
+        SELECT
+        <include refid="permissionColumns">
+            <property name="alias" value="p"/>
+        </include>
+        <include refid="dev.daqiang.ficusvirens.root.infra.mapper.BaseEntityMapper.baseEntityColumns" >
+            <property name="alias" value="p"/>
+        </include>
+        FROM blog_sys_permission p
+        INNER JOIN blog_sys_role_permission rp on rp.permission_id = p.id
+        WHERE rp.role_id = #{roleId}
+    </select>
+    <select id="selectById" resultMap="permissionResultMap">
+        SELECT
+        <include refid="permissionColumns">
+            <property name="alias" value="p"/>
+        </include>
+        <include refid="dev.daqiang.ficusvirens.root.infra.mapper.BaseEntityMapper.baseEntityColumns" >
+            <property name="alias" value="p"/>
+        </include>
+        FROM blog_sys_permission p
+        WHERE p.id = #{permissionId}
+    </select>
+    <select id="selectByName" resultMap="permissionResultMap">
+        SELECT
+        <include refid="permissionColumns">
+            <property name="alias" value="p"/>
+        </include>
+        <include refid="dev.daqiang.ficusvirens.root.infra.mapper.BaseEntityMapper.baseEntityColumns" >
+            <property name="alias" value="p"/>
+        </include>
+        FROM blog_sys_permission p
+        WHERE p.permission_name = #{permissionName}
+    </select>
+
+</mapper>

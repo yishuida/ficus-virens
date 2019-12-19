@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dev.daqiang.ficusvirens.root.infra.mapper.ThemeNodeMapper">
+
+    <resultMap id="userInfoResultMap" type="dev.daqiang.ficusvirens.root.entity.ThemeNode"
+               extends="dev.daqiang.ficusvirens.root.infra.mapper.BaseEntityMapper.baseEntityResultMap">
+        <id property="id" column="id"/>
+        <result property="themeName" column="theme_name" />
+        <result property="postId" column="post_id"/>
+        <result property="left" column="lft" />
+        <result property="right" column="rgt" />
+        <result property="level" column="level" />
+    </resultMap>
+
+    <sql id="themeNodeColumn">
+        ${alias}.id,
+        ${alias}.post_id,
+        ${alias}.theme_name,
+        ${alias}.lft,
+        ${alias}.rgt,
+        ${alias}.lev,
+    </sql>
+    <insert id="insertThemeNode">
+        INSERT INTO
+            blog_theme (theme_name, post_id)
+        VALUE (#{themeName}, #{postId})
+    </insert>
+    <update id="updateNode">
+        UPDATE blog_post
+        <set>
+            <if test="node.themeName != null">theme_name = #{node.themeName},</if>
+            <if test="node.postId != null">post_id = #{node.postId},</if>
+            <if test="node.level != null">lev = #{node.level}</if>
+        </set>
+    </update>
+    <update id="updateNodes">
+        UPDATE blog_theme
+        <set>
+            <if test="" >
+
+            </if>
+        </set>
+    </update>
+    <update id="updateLeftNode">
+        UPDATE
+            blog_theme bt
+        SET
+            bt.lft = bt.lft + 2
+        WHERE
+            lft > #{lft}
+    </update>
+    <update id="updateRightNode">
+        UPDATE
+            blog_theme bt
+        SET
+            bt.rgt = bt.rgt + 2
+        WHERE
+            rgt >= #{lft}
+    </update>
+    <delete id="deleteLeafNode"></delete>
+    <delete id="deleteAllUnderNode"></delete>
+    <select id="selectUnderRootNode" resultType="dev.daqiang.ficusvirens.root.entity.ThemeNode">
+        SELECT
+            <include refid="themeNodeColumn">
+                <property name="alias" value="bt"/>
+            </include>
+            <include refid="dev.daqiang.ficusvirens.root.infra.mapper.BaseEntityMapper.baseEntityColumns">
+                <property name="alias" value="bt"/>
+            </include>
+        FROM
+            blog_theme bt
+        WHERE
+            bt.lft > 1
+        ORDER BY bt.lft
+    </select>
+    <select id="selectNodeUnder" resultType="dev.daqiang.ficusvirens.root.entity.ThemeNode">
+        SELECT
+            <include refid="themeNodeColumn">
+                <property name="alias" value="bt"/>
+            </include>
+            <include refid="dev.daqiang.ficusvirens.root.infra.mapper.BaseEntityMapper.baseEntityColumns">
+                <property name="alias" value="bt"/>
+            </include>
+        FROM
+            blog_theme bt
+        WHERE
+            bt.lft > #{parent.left} AND #{parent.right} > bt.rgt
+        ORDER BY bt.lft
+    </select>
+    <select id="selectNodeAToNodeBPath" resultType="dev.daqiang.ficusvirens.root.entity.ThemeNode">
+        SELECT
+            <include refid="themeNodeColumn">
+                <property name="alias" value="bt"/>
+            </include>
+            <include refid="dev.daqiang.ficusvirens.root.infra.mapper.BaseEntityMapper.baseEntityColumns">
+                <property name="alias" value="bt"/>
+            </include>
+        FROM
+            blog_theme bt
+        WHERE
+            bt.left BETWEEN #{leftA} AND #{leftB} AND bt.right BETWEEN #{rightA} AND #{rightB}
+        ORDER BY bt.lft
+    </select>
+    <select id="selectNode" resultType="dev.daqiang.ficusvirens.root.entity.ThemeNode">
+        SELECT
+            <include refid="themeNodeColumn">
+                <property name="alias" value="bt"/>
+            </include>
+            <include refid="dev.daqiang.ficusvirens.root.infra.mapper.BaseEntityMapper.baseEntityColumns">
+                <property name="alias" value="bt"/>
+            </include>
+        FROM
+            blog_theme bt
+        WHERE
+            bt.id=#{nodeId}
+    </select>
+
+</mapper>

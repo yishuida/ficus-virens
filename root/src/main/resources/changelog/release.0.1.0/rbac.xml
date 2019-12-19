@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <property name="now" value="sysdate" dbms="oracle"/>
+    <property name="now" value="now()" dbms="mysql"/>
+    <property name="now" value="now()" dbms="postgresql"/>
+
+    <changeSet id="crate-table-20190727-0001" author="vista yih" >
+        <createTable tableName="blog_sys_user" remarks="user table">
+            <column name="id" type="BIGINT" remarks="user ID,primary key" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_blog_sys_user_id"/>
+            </column>
+            <column name="username" type="VARCHAR(100)" remarks="user name">
+                <constraints nullable="false" />
+            </column>
+            <column name="password" type="VARCHAR(512)" remarks="password" defaultValue="123456">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="create_by" type="BIGINT" remarks="create by" />
+            <column name="create_time" type="DATETIME" remarks="crate time" defaultValueDate="${now}"/>
+            <column name="last_update_by" type="BIGINT" remarks="last update by" />
+            <column name="last_update_time" type="DATETIME" remarks="last update time" defaultValueDate="${now}" />
+            <column name="object_version_number" type="BIGINT" remarks="object version number" defaultValueNumeric="1" />
+        </createTable>
+
+        <createTable tableName="blog_sys_role" remarks="role name">
+            <column name="id" type="BIGINT" remarks="role id, primary key" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_blog_sys_role_id"/>
+            </column>
+            <column name="role_name" type="VARCHAR(128)" remarks="role name">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="create_by" type="BIGINT" remarks="create by" />
+            <column name="create_time" type="DATETIME" remarks="crate time" defaultValueDate="${now}" />
+            <column name="last_update_by" type="BIGINT" remarks="last update by" />
+            <column name="last_update_time" type="DATETIME" remarks="last update time" defaultValueDate="${now}" />
+            <column name="object_version_number" type="BIGINT" remarks="object version number" defaultValueNumeric="1" />
+        </createTable>
+
+        <createTable tableName="blog_sys_permission" remarks="permission table">
+            <column name="id" type="BIGINT" remarks="permission id, primary key" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_blog_sys_permission_id" />
+            </column>
+            <column name="permission_name" type="VARCHAR(128)" remarks="permission_name">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="create_by" type="BIGINT" remarks="create by" />
+            <column name="create_time" type="DATETIME" remarks="crate time" defaultValueDate="${now}" />
+            <column name="last_update_by" type="BIGINT" remarks="last update by" />
+            <column name="last_update_time" type="DATETIME" remarks="last update time" defaultValueDate="${now}" />
+            <column name="object_version_number" type="BIGINT" remarks="object version number" defaultValueNumeric="1" />
+        </createTable>
+
+        <createTable tableName="blog_sys_user_role" remarks="User role association table">
+            <column name="id" type="BIGINT" remarks="table id" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_blog_sys_user_role_id" />
+            </column>
+            <column name="user_id" type="BIGINT" remarks="user id">
+                <constraints nullable="false" foreignKeyName="fk_user_role_to_user" references="blog_sys_user(id)" />
+            </column>
+            <column name="role_id" type="BIGINT" remarks="role id">
+                <constraints nullable="false" foreignKeyName="fk_user_role_to_role" references="blog_sys_role(id)" />
+            </column>
+
+            <column name="create_by" type="BIGINT" remarks="create by" />
+            <column name="create_time" type="DATETIME" remarks="crate time" defaultValueDate="${now}" />
+            <column name="last_update_by" type="BIGINT" remarks="last update by" />
+            <column name="last_update_time" type="DATETIME" remarks="last update time" defaultValueDate="${now}" />
+            <column name="object_version_number" type="BIGINT" remarks="object version number" defaultValueNumeric="1" />
+        </createTable>
+
+        <createTable tableName="blog_sys_role_permission" remarks="role permission association table">
+            <column name="id" type="BIGINT" remarks="table id" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_blog_sys_user_role_id" />
+            </column>
+            <column name="role_id" type="BIGINT" remarks="role id">
+                <constraints nullable="false" foreignKeyName="fk_role_permission_to_role" references="blog_sys_role(id)" />
+            </column>
+            <column name="permission_id" type="BIGINT" remarks="permission id">
+                <constraints nullable="false" foreignKeyName="fk_role_permission_to_permission" references="blog_sys_permission(id)" />
+            </column>
+
+            <column name="create_by" type="BIGINT" remarks="create by" />
+            <column name="create_time" type="DATETIME" remarks="crate time" defaultValueDate="${now}" />
+            <column name="last_update_by" type="BIGINT" remarks="last update by" />
+            <column name="last_update_time" type="DATETIME" remarks="last update time" defaultValueDate="${now}" />
+            <column name="object_version_number" type="BIGINT" remarks="object version number" defaultValueNumeric="1" />
+        </createTable>
+
+        <createTable tableName="blog_sys_user_info" remarks="user info">
+            <column name="id" type="BIGINT" remarks="user id" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_blog_sys_user_info_id" foreignKeyName="fk_user_info_to_user" references="blog_sys_user(id)" />
+            </column>
+            <column name="describe" type="varchar(1024)" remarks="user describe" />
+            <column name="first_name" type="VARCHAR(256)" remarks="first name" />
+            <column name="last_name" type="VARCHAR(256)" remarks="last name" />
+
+            <column name="create_by" type="BIGINT" remarks="create by" />
+            <column name="create_time" type="DATETIME" remarks="crate time" defaultValueDate="${now}" />
+            <column name="last_update_by" type="BIGINT" remarks="last update by" />
+            <column name="last_update_time" type="DATETIME" remarks="last update time" defaultValueDate="${now}" />
+            <column name="object_version_number" type="BIGINT" remarks="object version number" defaultValueNumeric="1" />
+        </createTable>
+    </changeSet>
+
+
+    <changeSet id="insert-data-20190728-0002" author="vista yih">
+        <insert tableName="blog_sys_user">
+            <column name="id" valueNumeric="1"/>
+            <column name="username" value="admin" />
+            <column name="password" value="123456"/>
+        </insert>
+        <insert tableName="blog_sys_user">
+            <column name="id" valueNumeric="2"/>
+            <column name="username" value="vista yih" />
+            <column name="password" value="123456"/>
+        </insert>
+        <insert tableName="blog_sys_user">
+            <column name="id" valueNumeric="3"/>
+            <column name="username" value="test" />
+            <column name="password" value="123456"/>
+        </insert>
+        <insert tableName="blog_sys_user">
+            <column name="id" valueNumeric="4"/>
+            <column name="username" value="test2" />
+            <column name="password" value="123456"/>
+        </insert>
+
+        <insert tableName="blog_sys_user_info">
+            <column name="id" valueNumeric="2" />
+            <column name="first_name" value="Vista" />
+            <column name="last_name" value="Yih" />
+        </insert>
+
+        <insert tableName="blog_sys_role">
+            <column name="id" valueNumeric="1" />
+            <column name="role_name" value="administrator" />
+        </insert>
+        <insert tableName="blog_sys_role">
+            <column name="id" valueNumeric="2" />
+            <column name="role_name" value="author" />
+        </insert>
+        <insert tableName="blog_sys_role">
+            <column name="id" valueNumeric="3" />
+            <column name="role_name" value="visitor" />
+        </insert>
+        <insert tableName="blog_sys_role">
+            <column name="id" valueNumeric="4" />
+            <column name="role_name" value="test" />
+        </insert>
+
+        <insert tableName="blog_sys_user_role">
+            <column name="user_id" valueNumeric="1" />
+            <column name="role_id" valueNumeric="1" />
+        </insert>
+        <insert tableName="blog_sys_user_role">
+            <column name="user_id" valueNumeric="1" />
+            <column name="role_id" valueNumeric="2" />
+        </insert>
+        <insert tableName="blog_sys_user_role">
+            <column name="user_id" valueNumeric="1" />
+            <column name="role_id" valueNumeric="3" />
+        </insert>
+        <insert tableName="blog_sys_user_role">
+            <column name="user_id" valueNumeric="2" />
+            <column name="role_id" valueNumeric="2" />
+        </insert>
+        <insert tableName="blog_sys_user_role">
+            <column name="user_id" valueNumeric="2" />
+            <column name="role_id" valueNumeric="3" />
+        </insert>
+        <insert tableName="blog_sys_user_role">
+            <column name="user_id" valueNumeric="3" />
+            <column name="role_id" valueNumeric="1" />
+        </insert>
+        <insert tableName="blog_sys_user_role">
+            <column name="user_id" valueNumeric="3" />
+            <column name="role_id" valueNumeric="2" />
+        </insert>
+        <insert tableName="blog_sys_user_role">
+            <column name="user_id" valueNumeric="3" />
+            <column name="role_id" valueNumeric="3" />
+        </insert>
+        
+
+        <insert tableName="blog_sys_permission">
+            <column name="id" valueNumeric="1" />
+            <column name="permission_name" value="role" />
+        </insert>
+        <insert tableName="blog_sys_permission">
+            <column name="id" valueNumeric="2" />
+            <column name="permission_name" value="post" />
+        </insert>
+        <insert tableName="blog_sys_permission">
+            <column name="id" valueNumeric="3" />
+            <column name="permission_name" value="comment" />
+        </insert>
+        <insert tableName="blog_sys_permission">
+            <column name="id" valueNumeric="4" />
+            <column name="permission_name" value="test" />
+        </insert>
+
+        <insert tableName="blog_sys_role_permission">
+            <column name="role_id" valueNumeric="1" />
+            <column name="permission_id" valueNumeric="1"/>
+        </insert>
+        <insert tableName="blog_sys_role_permission">
+            <column name="role_id" valueNumeric="1" />
+            <column name="permission_id" valueNumeric="2"/>
+        </insert>
+        <insert tableName="blog_sys_role_permission">
+            <column name="role_id" valueNumeric="1" />
+            <column name="permission_id" valueNumeric="3"/>
+        </insert>
+        <insert tableName="blog_sys_role_permission">
+            <column name="role_id" valueNumeric="2" />
+            <column name="permission_id" valueNumeric="2"/>
+        </insert>
+        <insert tableName="blog_sys_role_permission">
+            <column name="role_id" valueNumeric="3" />
+            <column name="permission_id" valueNumeric="1"/>
+        </insert>
+        <insert tableName="blog_sys_role_permission">
+            <column name="role_id" valueNumeric="3" />
+            <column name="permission_id" valueNumeric="2"/>
+        </insert>
+        <insert tableName="blog_sys_role_permission">
+            <column name="role_id" valueNumeric="3" />
+            <column name="permission_id" valueNumeric="3"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>
