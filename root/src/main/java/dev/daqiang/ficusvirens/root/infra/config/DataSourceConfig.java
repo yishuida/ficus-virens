@@ -1,27 +1,25 @@
 package dev.daqiang.ficusvirens.root.infra.config;
 
 
+import dev.daqiang.ficusvirens.root.common.constant.DatabaseTypeEnum;
 import org.apache.ibatis.mapping.DatabaseIdProvider;
 import org.apache.ibatis.mapping.VendorDatabaseIdProvider;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import javax.sql.DataSource;
 import java.io.IOException;
 import java.util.Properties;
-
-import dev.daqiang.ficusvirens.root.common.constant.DatabaseTypeEnum;
 /**
  *
  * @author Vista-Yih
  * @date 2019/12/19
  */
-@Configuration
+// @Configuration
 public class DataSourceConfig {
 
     @Autowired

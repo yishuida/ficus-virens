@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="dev.daqiang.ficusvirens.root.infra.mapper.ThemeNodeMapper">
 
-    <resultMap id="userInfoResultMap" type="dev.daqiang.blog.domain.entity.ThemeNode"
+    <resultMap id="userInfoResultMap" type="dev.daqiang.ficusvirens.root.domain.entity.ThemeNode"
                extends="dev.daqiang.ficusvirens.root.infra.mapper.BaseEntityMapper.baseEntityResultMap">
         <id property="id" column="id"/>
         <result property="themeName" column="theme_name" />
@@ -61,7 +61,7 @@
     </update>
     <delete id="deleteLeafNode"></delete>
     <delete id="deleteAllUnderNode"></delete>
-    <select id="selectUnderRootNode" resultType="dev.daqiang.blog.domain.entity.ThemeNode">
+    <select id="selectUnderRootNode" resultType="dev.daqiang.ficusvirens.root.domain.entity.ThemeNode">
         SELECT
             <include refid="themeNodeColumn">
                 <property name="alias" value="bt"/>
@@ -75,7 +75,7 @@
             bt.lft > 1
         ORDER BY bt.lft
     </select>
-    <select id="selectNodeUnder" resultType="dev.daqiang.blog.domain.entity.ThemeNode">
+    <select id="selectNodeUnder" resultType="dev.daqiang.ficusvirens.root.domain.entity.ThemeNode">
         SELECT
             <include refid="themeNodeColumn">
                 <property name="alias" value="bt"/>
@@ -89,7 +89,7 @@
             bt.lft > #{parent.left} AND #{parent.right} > bt.rgt
         ORDER BY bt.lft
     </select>
-    <select id="selectNodeAToNodeBPath" resultType="dev.daqiang.blog.domain.entity.ThemeNode">
+    <select id="selectNodeAToNodeBPath" resultType="dev.daqiang.ficusvirens.root.domain.entity.ThemeNode">
         SELECT
             <include refid="themeNodeColumn">
                 <property name="alias" value="bt"/>
@@ -103,7 +103,7 @@
             bt.left BETWEEN #{leftA} AND #{leftB} AND bt.right BETWEEN #{rightA} AND #{rightB}
         ORDER BY bt.lft
     </select>
-    <select id="selectNode" resultType="dev.daqiang.blog.domain.entity.ThemeNode">
+    <select id="selectNode" resultType="dev.daqiang.ficusvirens.root.domain.entity.ThemeNode">
         SELECT
             <include refid="themeNodeColumn">
                 <property name="alias" value="bt"/>

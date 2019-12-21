@@ -1,7 +1,7 @@
 spring:
   datasource:
-    driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://${K8S_MASTER:localhost}:${K8S_MYSQL_PORT:30306}/blog_project?characterEncoding=utf8&useSSL=false
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.247.11:3306/ficus_virens?characterEncoding=utf8&useSSL=false
     username: root
     password: yishuida
   liquibase:
@@ -16,7 +16,7 @@ logging:
 
 mybatis:
   check-config-location: false
-  type-aliases-package: dev.daqiang.blog.domain.entity # 无效
+  type-aliases-package: dev.daqiang.ficusvirens.root.domain.entity # 无效
   configuration:
     database-id: mysql
   mapper-locations: classpath:mapper/*.xml

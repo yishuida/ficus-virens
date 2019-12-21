@@ -1,16 +1,27 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { HelloWorldComponent } from './hello-world/hello-world.component';
+import { MenuComponent } from './menu/menu.component';
+import {HttpClientModule} from '@angular/common/http';
+import {HelloWorldService} from './service/hello-world.service';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HelloWorldComponent,
+    MenuComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    HelloWorldService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

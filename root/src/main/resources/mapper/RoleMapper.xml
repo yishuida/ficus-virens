@@ -4,15 +4,15 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="dev.daqiang.ficusvirens.root.infra.mapper.RoleMapper">
 
-    <resultMap id="roleBaseResultMap" type="dev.daqiang.blog.domain.entity.Role"
+    <resultMap id="roleBaseResultMap" type="dev.daqiang.ficusvirens.root.domain.entity.Role"
                extends="dev.daqiang.ficusvirens.root.infra.mapper.BaseEntityMapper.baseEntityResultMap">
         <id property="id" column="id" />
         <result property="roleName" column="role_name" />
     </resultMap>
 
 
-    <resultMap id="roleResultMap" type="dev.daqiang.blog.domain.entity.Role" extends="roleBaseResultMap">
-        <collection property="permissions" ofType="dev.daqiang.blog.domain.entity.Permission" fetchType="lazy"
+    <resultMap id="roleResultMap" type="dev.daqiang.ficusvirens.root.domain.entity.Role" extends="roleBaseResultMap">
+        <collection property="permissions" ofType="dev.daqiang.ficusvirens.root.domain.entity.Permission" fetchType="lazy"
                     select="dev.daqiang.ficusvirens.root.infra.mapper.PermissionMapper.selectByRoleId" javaType="ArrayList"
                     column="{roleId=id}">
         </collection>
