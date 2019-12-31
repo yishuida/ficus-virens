@@ -1,14 +1,22 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
-import { HelloWorldComponent } from './hello-world/hello-world.component';
+import { PageNotFoundComponent } from './default/page-not-found/page-not-found.component';
+import { PostListComponent } from './home/post-list/post-list.component';
+import {IndexComponent} from './home/index/index.component';
 
-const routes: Routes = [
-  {path: '', component: HelloWorldComponent},
-  {path: 'hello-world', component: HelloWorldComponent},
+const appRoutes: Routes = [
+  { path: '', component: IndexComponent },
+  { path: '**', component: PageNotFoundComponent },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  imports: [
+    CommonModule,
+    RouterModule.forRoot(appRoutes),
+  ],
+  exports: [
+    RouterModule
+  ]
 })
 export class AppRoutingModule { }
