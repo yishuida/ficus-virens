@@ -1,0 +1,13 @@
+<!-- TODO: figure out if the <nav> should go inside of a <header> element. -->
+
+<mat-toolbar color="primary">
+  <a mat-flat-button color="primary" routerLink="/" aria-label="Vista Yih's Blog">
+    <mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon>
+    <span>Vista Yih's Blog</span>
+  </a>
+  <div class="flex-spacer"></div>
+
+  <a mat-flat-button color="primary" *ngFor="let key of sectionKeys" [routerLink]="key">
+    {{ sections[key].name }}
+  </a>
+</mat-toolbar>
