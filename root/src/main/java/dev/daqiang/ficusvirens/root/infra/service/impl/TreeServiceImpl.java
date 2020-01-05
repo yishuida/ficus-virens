@@ -1,8 +1,8 @@
 package dev.daqiang.ficusvirens.root.infra.service.impl;
 
-import dev.daqiang.ficusvirens.root.domain.entity.ThemeNode;
-import dev.daqiang.ficusvirens.root.infra.mapper.ThemeNodeMapper;
-import dev.daqiang.ficusvirens.root.infra.service.ThemeService;
+import dev.daqiang.ficusvirens.root.domain.entity.TreeNode;
+import dev.daqiang.ficusvirens.root.infra.mapper.TreeNodeMapper;
+import dev.daqiang.ficusvirens.root.infra.service.TreeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,16 +14,16 @@ import java.util.List;
  * @date 2019/12/19
  */
 @Service
-public class ThemeServiceImpl implements ThemeService {
+public class TreeServiceImpl implements TreeService {
 
     @Autowired
-    private ThemeNodeMapper mapper;
+    private TreeNodeMapper mapper;
 
     @Override
-    public List<ThemeNode> findChildNodeUnder(ThemeNode parentNode) {
+    public List<TreeNode> findChildNodeUnder(TreeNode parentNode) {
         if (isExist(parentNode)) {
             // TODO 传入的值是否带有 left 和 right
-            // ThemeNode node = mapper.selectNode(parentNode.getId());
+            // TreeNode node = mapper.selectNode(parentNode.getId());
             return mapper.selectNodeUnder(parentNode);
         }
 
@@ -33,11 +33,11 @@ public class ThemeServiceImpl implements ThemeService {
 
 
     @Override
-    public boolean saveNodeUnder(ThemeNode parentNode, ThemeNode newNode) {
+    public boolean saveNodeUnder(TreeNode parentNode, TreeNode newNode) {
         if (isExist(parentNode)) {
             Integer left = parentNode.getRight();
-            mapper.updateLeftNode(left);
-            mapper.updateRightNode(left);
+            mapper.nodeRightAddTwoAfter(parentNode);
+            mapper.nodeLeftAddTwoAfter(parentNode);
             newNode.setLeft(left);
             newNode.setRight(left + 1);
             return mapper.updateNode(newNode);
@@ -46,17 +46,17 @@ public class ThemeServiceImpl implements ThemeService {
     }
 
     @Override
-    public boolean removeNode(ThemeNode node) {
+    public boolean removeNode(TreeNode node) {
         return false;
     }
 
     @Override
-    public boolean updateNode(ThemeNode node) {
+    public boolean updateNode(TreeNode node) {
         return false;
     }
 
     @Override
-    public boolean isExist(ThemeNode node) {
+    public boolean isExist(TreeNode node) {
         return node.getId() != null && mapper.selectNode(node.getId()) != null;
     }
 }

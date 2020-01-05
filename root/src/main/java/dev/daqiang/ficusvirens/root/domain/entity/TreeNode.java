@@ -10,11 +10,11 @@ import lombok.EqualsAndHashCode;
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class ThemeNode extends BaseEntity {
+public class TreeNode extends BaseEntity {
 
     private Long id;
 
-    private String themeName;
+    private String nodeName;
 
     private Long postId;
 
@@ -22,5 +22,5 @@ public class ThemeNode extends BaseEntity {
 
     private Integer right;
 
-    private Integer level;
+    private Integer layer;
 }

@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dev.daqiang.ficusvirens.root.infra.mapper.TreeNodeMapper">
+
+    <resultMap id="treeNodeResultMap" type="dev.daqiang.ficusvirens.root.domain.entity.TreeNode"
+               extends="dev.daqiang.ficusvirens.root.infra.mapper.BaseEntityMapper.baseEntityResultMap">
+        <id property="id" column="id"/>
+        <result property="nodeName" column="node_name" />
+        <result property="postId" column="post_id"/>
+        <result property="left" column="lft" />
+        <result property="right" column="rgt" />
+        <result property="layer" column="layer" />
+    </resultMap>
+
+    <sql id="treeNodeColumn">
+        ${alias}.id,
+        ${alias}.post_id,
+        ${alias}.node_name,
+        ${alias}.lft,
+        ${alias}.rgt,
+        ${alias}.layer,
+    </sql>
+    <insert id="insertNode">
+        INSERT INTO blog_tree_node
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="nodeName != null and nodeName!=''">
+                node_name,
+            </if>
+            <if test="postId != null and postId != ''">
+                post_id,
+            </if>
+            <if test="left != null and left != ''">
+                lft,
+            </if>
+            <if test="right != null and right != ''">
+                rgt,
+            </if>
+            <if test="createBy != null and createBy !=''">
+                create_by,
+            </if>
+            <if test="createTime != null and createTime !=''">
+                create_time,
+            </if>
+            <if test="lastUpdateBy != null and lastUpdateBy !=''">
+                last_update_by,
+            </if>
+            <if test="lastUpdateTime != null and lastUpdateTime !=''">
+                last_update_time,
+            </if>
+            <if test="objectVersionNumber != null and objectVersionNumber !=''">
+                object_version_number
+            </if>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="nodeName != null and nodeName!=''">
+                #{nodeName},
+            </if>
+            <if test="postId != null and postId != ''">
+                #{post_id},
+            </if>
+            <if test="left != null and left != ''">
+                #{left},
+            </if>
+            <if test="right != null and right != ''">
+                #{right},
+            </if>
+            <if test="createBy != null and createBy !=''">
+                #{createBy},
+            </if>
+            <if test="createTime != null and createTime !=''">
+                #{createTime},
+            </if>
+            <if test="lastUpdateBy != null and lastUpdateBy !=''">
+                #{lastUpdateBy},
+            </if>
+            <if test="lastUpdateTime != null and lastUpdateTime !=''">
+                #{lastUpdateTime},
+            </if>
+            <if test="objectVersionNumber != null and objectVersionNumber !=''">
+                #{objectVersionNumber}
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateNode">
+        UPDATE blog_post
+        <set>
+            <if test="node.themeName != null">node_name = #{node.themeName},</if>
+            <if test="node.postId != null">post_id = #{node.postId},</if>
+            <if test="node.level != null">lev = #{node.level}</if>
+        </set>
+    </update>
+    <update id="updateNodes">
+        UPDATE blog_tree_node
+        <set>
+            <if test="" >
+
+            </if>
+        </set>
+    </update>
+
+    <update id="nodeLeftAddTwoAfter">
+        UPDATE
+            blog_tree_node  bt
+        SET
+            bt.lft = bt.lft + 2
+        WHERE bt.lft >= #{right}
+    </update>
+    <update id="nodeRightAddTwoAfter">
+        UPDATE
+            blog_tree_node  bt
+        SET
+            bt.rgt = bt.rgt + 2
+        WHERE bt.rgt >= #{right}
+    </update>
+    <delete id="deleteLeafNode"></delete>
+    <delete id="deleteAllUnderNode"></delete>
+
+    <select id="selectNodeUnder" resultMap="treeNodeResultMap" parameterType="TreeNode">
+        SELECT
+            <include refid="treeNodeColumn">
+                <property name="alias" value="bt"/>
+            </include>
+            <include refid="dev.daqiang.ficusvirens.root.infra.mapper.BaseEntityMapper.baseEntityColumns">
+                <property name="alias" value="bt"/>
+            </include>
+        FROM
+            blog_tree_node bt
+        WHERE
+            bt.lft > #{parent.left} AND #{parent.right} > bt.rgt
+        ORDER BY bt.lft ASC
+    </select>
+
+    <select id="selectNode" resultMap="treeNodeResultMap">
+        SELECT
+            <include refid="treeNodeColumn">
+                <property name="alias" value="bt"/>
+            </include>
+            <include refid="dev.daqiang.ficusvirens.root.infra.mapper.BaseEntityMapper.baseEntityColumns">
+                <property name="alias" value="bt"/>
+            </include>
+        FROM
+            blog_tree_node bt
+        WHERE
+            bt.id=#{nodeId}
+    </select>
+
+</mapper>

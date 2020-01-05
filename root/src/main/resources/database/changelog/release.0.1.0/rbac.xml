@@ -186,7 +186,7 @@
             <column name="user_id" valueNumeric="3" />
             <column name="role_id" valueNumeric="3" />
         </insert>
-        
+
 
         <insert tableName="blog_sys_permission">
             <column name="id" valueNumeric="1" />

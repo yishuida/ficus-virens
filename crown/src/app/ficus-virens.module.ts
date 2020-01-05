@@ -11,8 +11,9 @@ import { TimeLineComponent } from './pages/time-line/time-line.component';
 import { IndexComponent } from './pages/index/index.component';
 import {DashboardComponent} from './pages/dashboard/dashboard.component';
 import { TopBarComponent } from './shared/top-bar/top-bar.component';
-import {MatButtonModule, MatIconModule, MatListModule, MatToolbarModule} from '@angular/material';
+import {MatButtonModule, MatGridListModule, MatIconModule, MatListModule, MatToolbarModule} from '@angular/material';
 import {NavbarComponent} from './shared/navbar/navbar.component';
+import { FooterComponent } from './shared/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import {NavbarComponent} from './shared/navbar/navbar.component';
     DashboardComponent,
     TopBarComponent,
     NavbarComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,6 +36,7 @@ import {NavbarComponent} from './shared/navbar/navbar.component';
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
+    MatGridListModule,
   ],
   providers: [],
   bootstrap: [FicusVirensApp]

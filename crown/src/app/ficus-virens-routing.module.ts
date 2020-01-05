@@ -8,7 +8,7 @@ import {AboutMeComponent} from './pages/about-me/about-me.component';
 
 const appRoutes: Routes = [
   { path: 'index', component: IndexComponent },
-  { path: '', redirectTo: 'index' },
+  { path: '', redirectTo: 'index', pathMatch: 'full'},
   { path: 'time-line', component: TimeLineComponent },
   { path: 'about-me', component: AboutMeComponent },
   { path: '**', component: PageNotFoundComponent },
