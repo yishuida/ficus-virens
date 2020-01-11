@@ -12,6 +12,13 @@ import lombok.EqualsAndHashCode;
 @Data
 public class TreeNode extends BaseEntity {
 
+    public TreeNode() { }
+
+    public TreeNode(String nodeName, Long postId) {
+        this.nodeName = nodeName;
+        this.postId = postId;
+    }
+
     private Long id;
 
     private String nodeName;

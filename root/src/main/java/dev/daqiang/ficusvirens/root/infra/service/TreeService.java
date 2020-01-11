@@ -11,13 +11,17 @@ import java.util.List;
  */
 public interface TreeService {
 
-    List<TreeNode> findChildNodeUnder(TreeNode parentNode);
+    TreeNode findNode(Long id);
+    List<TreeNode> findSubTreeNode(TreeNode node);
+
+    List<TreeNode> findTreePath(TreeNode start, TreeNode end);
+
 
     boolean saveNodeUnder(TreeNode parentNode, TreeNode newNode);
 
-    boolean removeNode(TreeNode node);
+    boolean removeSubTree(TreeNode node);
 
     boolean updateNode(TreeNode node);
 
-    boolean isExist(TreeNode node);
+    boolean isExist(Long id);
 }

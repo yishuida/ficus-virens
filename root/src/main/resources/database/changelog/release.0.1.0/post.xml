@@ -15,8 +15,8 @@
                 <constraints nullable="false" primaryKey="true" primaryKeyName="pk_blog_post_id" />
             </column>
 
-            <column name="post_name" type="VARCHAR(1024)" remarks="post name">
-                <constraints nullable="false" />
+            <column name="post_name" type="VARCHAR(256)" remarks="post name">
+                <constraints nullable="false" unique="true" />
             </column>
 
             <column name="context" type="TEXT" remarks="context" />
@@ -62,6 +62,12 @@
     </changeSet>
 
     <changeSet id="insert-data-20190803-0002" author="vista yih">
+        <insert tableName="blog_post">
+            <column name="id" autoIncrement="true" valueNumeric="1" />
+            <column name="post_name" value="test_post" />
+            <column name="context" value="qwertyuiopasdfghjklzxcvbnm" />
+        </insert>
+
         <insert tableName="blog_tree_node">
             <column name="id" valueNumeric="1" />
             <column name="node_name" value="Food"/>
@@ -113,7 +119,7 @@
 
         <insert tableName="blog_tree_node">
             <column name="id" valueNumeric="8" />
-            <column name="node_name" value="Fruit"/>
+            <column name="node_name" value="Beef"/>
             <column name="lft" valueNumeric="13" />
             <column name="rgt" valueNumeric="14"/>
         </insert>

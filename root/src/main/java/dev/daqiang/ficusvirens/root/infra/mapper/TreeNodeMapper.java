@@ -14,7 +14,14 @@ public interface TreeNodeMapper {
      * @param nodeId 节点编号
      * @return 节点 TreeNode
      */
-    TreeNode selectNode(Long nodeId);
+    TreeNode selectNodeById(Long nodeId);
+
+    /**
+     * 获得主题节点的信息
+     * @param name 节点名
+     * @return 节点 TreeNode
+     */
+    TreeNode selectNodeByName(String name);
 
     /**
      * 获得某节点的所有子节点
@@ -25,41 +32,68 @@ public interface TreeNodeMapper {
 
 
     /**
+     * 获取从 start 到 end 的路径节点
+     * @param start 开始节点
+     * @param end 结束节点
+     * @return 节点路径
+     */
+    List<TreeNode> selectNodePath(TreeNode start, TreeNode end);
+
+    /**
      * 更新节点信息
      * @param node 节点
      * @return
      */
-    Boolean updateNode(TreeNode node);
+    int updateNode(TreeNode node);
 
     /**
      * 所有大于 node 右值的节点左值加2
      * @param node 节点
      * @return ...
      */
-    Boolean nodeLeftAddTwoAfter(TreeNode node);
+    int updateNodeLeftWhenAddOne(TreeNode node);
 
     /**
      * 所有大于等于 node 右值的节点右值加2
      * @param node 节点
      * @return ...
      */
-    Boolean nodeRightAddTwoAfter(TreeNode node);
+    int updateNodeRightWhenAddOne(TreeNode node);
+
+    /**
+     * 所有大于等于 node 右值的节点左值减去当前删除的节点总和
+     * @param node 节点
+     * @return ...
+     */
+    int updateNodeLeftWhenRemoveOne(TreeNode node);
+
+    /**
+     * 所有大于等于 node 右值的节点右值减去当前删除的节点总和
+     * @param node 节点
+     * @return ...
+     */
+    int updateNodeRightWhenRemoveOne(TreeNode node);
 
     /**
      * 更新节点内容
      * @param nodes 节点们
      * @return ...
      */
-    Boolean updateNodes(List<TreeNode> nodes);
+    int updateNodes(List<TreeNode> nodes);
 
     /**
      * 插入一个节点
      * @param node 节点
      * @return ...
      */
-    Boolean insertNode(TreeNode node);
+    
+    int insertNode(TreeNode node);
 
-    Boolean deleteLeafNode(Integer left, Integer right);
+    /**
+     * 删除该节点和它的子节点
+     * @param node 节点
+     * @return ...
+     */
+    int deleteSubNodeTree(TreeNode node);
 
-    Boolean deleteAllUnderNode(Integer left, Integer right);
 }

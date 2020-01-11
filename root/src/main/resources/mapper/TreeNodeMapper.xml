@@ -59,7 +59,7 @@
                 #{nodeName},
             </if>
             <if test="postId != null and postId != ''">
-                #{post_id},
+                #{postId},
             </if>
             <if test="left != null and left != ''">
                 #{left},
@@ -86,11 +86,11 @@
     </insert>
 
     <update id="updateNode">
-        UPDATE blog_post
+        UPDATE blog_tree_node
         <set>
-            <if test="node.themeName != null">node_name = #{node.themeName},</if>
-            <if test="node.postId != null">post_id = #{node.postId},</if>
-            <if test="node.level != null">lev = #{node.level}</if>
+            <if test="nodeName != null">node_name = #{nodeName},</if>
+            <if test="postId != null">post_id = #{postId},</if>
+            <if test="layer != null">layer = #{layer}</if>
         </set>
     </update>
     <update id="updateNodes">
@@ -102,24 +102,44 @@
         </set>
     </update>
 
-    <update id="nodeLeftAddTwoAfter">
+    <update id="updateNodeLeftWhenAddOne">
         UPDATE
-            blog_tree_node  bt
+            blog_tree_node  btn
         SET
-            bt.lft = bt.lft + 2
-        WHERE bt.lft >= #{right}
+            btn.lft = btn.lft + 2
+        WHERE btn.lft >= #{right}
     </update>
-    <update id="nodeRightAddTwoAfter">
+    <update id="updateNodeRightWhenAddOne">
         UPDATE
-            blog_tree_node  bt
+            blog_tree_node  btn
         SET
-            bt.rgt = bt.rgt + 2
-        WHERE bt.rgt >= #{right}
+            btn.rgt = btn.rgt + 2
+        WHERE btn.rgt >= #{right}
     </update>
-    <delete id="deleteLeafNode"></delete>
-    <delete id="deleteAllUnderNode"></delete>
+    <update id="updateNodeLeftWhenRemoveOne">
+        UPDATE
+            blog_tree_node btn
+        SET
+            btn.lft = btn.lft - (#{right} - #{left} + 1)
+        WHERE
+            btn.lft > #{left}
+    </update>
+    <update id="updateNodeRightWhenRemoveOne">
+        UPDATE
+            blog_tree_node btn
+        SET
+            btn.rgt = btn.rgt - (#{right} - #{left} + 1)
+        WHERE
+            btn.rgt > #{right}
+    </update>
+    <delete id="deleteSubNodeTree">
+        DELETE FROM
+            blog_tree_node
+        WHERE
+            lft &gt;= #{left} AND rgt &lt;= #{right}
+    </delete>
 
-    <select id="selectNodeUnder" resultMap="treeNodeResultMap" parameterType="TreeNode">
+    <select id="selectNodeUnder" resultMap="treeNodeResultMap">
         SELECT
             <include refid="treeNodeColumn">
                 <property name="alias" value="bt"/>
@@ -130,11 +150,11 @@
         FROM
             blog_tree_node bt
         WHERE
-            bt.lft > #{parent.left} AND #{parent.right} > bt.rgt
+            bt.lft >= #{parent.left} AND #{parent.right} >= bt.rgt
         ORDER BY bt.lft ASC
     </select>
 
-    <select id="selectNode" resultMap="treeNodeResultMap">
+    <select id="selectNodeById" resultMap="treeNodeResultMap">
         SELECT
             <include refid="treeNodeColumn">
                 <property name="alias" value="bt"/>
@@ -146,6 +166,36 @@
             blog_tree_node bt
         WHERE
             bt.id=#{nodeId}
+    </select>
+
+    <select id="selectNodePath" resultMap="treeNodeResultMap">
+        SELECT
+            <include refid="treeNodeColumn">
+                <property name="alias" value="bt"/>
+            </include>
+            <include refid="dev.daqiang.ficusvirens.root.infra.mapper.BaseEntityMapper.baseEntityColumns">
+                <property name="alias" value="bt"/>
+            </include>
+        FROM
+            blog_tree_node bt
+        WHERE
+            bt.lft &gt;= #{start.left} AND bt.lft &lt;= #{end.left}
+            AND bt.rgt &lt;= #{start.right} AND bt.rgt &gt;= #{end.right}
+        ORDER BY bt.lft ASC
+    </select>
+
+    <select id="selectNodeByName" resultType="dev.daqiang.ficusvirens.root.domain.entity.TreeNode">
+        SELECT
+            <include refid="treeNodeColumn">
+                <property name="alias" value="bt"/>
+            </include>
+            <include refid="dev.daqiang.ficusvirens.root.infra.mapper.BaseEntityMapper.baseEntityColumns">
+                <property name="alias" value="bt"/>
+            </include>
+        FROM
+            blog_tree_node bt
+        WHERE
+            bt.node_name=#{name}
     </select>
 
 </mapper>

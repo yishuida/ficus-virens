@@ -29,13 +29,13 @@ public class TreeNodeMapperTest {
 
     @Test
     public void selectNodeTest() {
-        TreeNode node = mapper.selectNode(1L);
+        TreeNode node = mapper.selectNodeById(1L);
         assertEquals(node.getNodeName(), "Food");
     }
 
     @Test
     public void selectNodeUnderTest() {
-        TreeNode node = mapper.selectNode(1L);
+        TreeNode node = mapper.selectNodeById(1L);
         List<TreeNode> nodes = mapper.selectNodeUnder(node);
         assertEquals(nodes.size(), 8);
     }
@@ -43,16 +43,27 @@ public class TreeNodeMapperTest {
     @Test
     @Transactional
     public void insertNodeTest() {
-        TreeNode red = mapper.selectNode(3L);
+        TreeNode red = mapper.selectNodeById(3L);
         TreeNode apple = new TreeNode();
         apple.setNodeName("apple");
         apple.setRight(red.getRight());
         apple.setLeft(red.getRight() + 1);
-        mapper.nodeLeftAddTwoAfter(red);
-        mapper.nodeRightAddTwoAfter(red);
+        mapper.updateNodeLeftWhenAddOne(red);
+        mapper.updateNodeRightWhenAddOne(red);
         mapper.insertNode(apple);
-        TreeNode meat = mapper.selectNode(7L);
+        TreeNode meat = mapper.selectNodeById(7L);
         assertEquals(meat.getRight().longValue(), 19L);
+    }
+
+    @Test
+    public void selectNodePathTest() {
+        TreeNode root = mapper.selectNodeById(1L);
+        TreeNode banana = mapper.selectNodeById(6L);
+
+        List<TreeNode> list = mapper.selectNodePath(root, banana);
+        for (TreeNode node: list) {
+            System.out.println(node);
+        }
     }
 
 }
