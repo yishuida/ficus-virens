@@ -1,0 +1,21 @@
+spring:
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:PUBLIC;MODE=MySQL;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+  liquibase:
+    enabled: true
+    change-log: classpath:database/changelog/master.xml
+  h2:
+    console:
+      enabled: true
+
+logging:
+  level:
+    dev.daqiang.blog.infra.mapper: debug
+
+mybatis:
+  check-config-location: false
+  type-aliases-package: dev.daqiang.ficusvirens.root.domain.entity # 无效
+  configuration:
+    database-id: mysql
+  mapper-locations: classpath:mapper/*.xml
