@@ -1,28 +1,19 @@
 package dev.daqiang.ficusvirens.root.infra.config;
 
 
-import dev.daqiang.ficusvirens.root.common.constant.DatabaseTypeEnum;
-import org.apache.ibatis.mapping.DatabaseIdProvider;
-import org.apache.ibatis.mapping.VendorDatabaseIdProvider;
-import org.mybatis.spring.SqlSessionFactoryBean;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
-import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
-import org.springframework.jdbc.core.JdbcTemplate;
+import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.context.annotation.Configuration;
 
-import javax.sql.DataSource;
-import java.io.IOException;
-import java.util.Properties;
 /**
  *
  * @author Vista-Yih
  * @date 2019/12/19
  */
-// @Configuration
+@Configuration
+@MapperScan("dev.daqiang.ficusvirens.root.infra.mapper")
 public class DataSourceConfig {
 
-    @Autowired
+/*    @Autowired
     DataSource dataSource;
 
     @Value("${mybatis.mapper-locations}")
@@ -54,5 +45,14 @@ public class DataSourceConfig {
         factoryBean.setDatabaseIdProvider(databaseIdProvider());
         factoryBean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources(mapperLocations));
         return factoryBean;
-    }
+    }*/
+
+/*    @Bean
+    @ConditionalOnMissingBean
+    public SqlSessionFactory sqlSessionFactory(DataSource dataSource) throws Exception {
+        SqlSessionFactoryBean factory = new SqlSessionFactoryBean();
+        factory.setDataSource(dataSource);
+        factory.setVfs(SpringBootVFS.class);
+        return factory.getObject();
+    }*/
 }
