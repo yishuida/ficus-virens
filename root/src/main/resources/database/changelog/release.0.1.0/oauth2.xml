@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="create-table-20201109-0001" author="vista yih" >
+        <createTable tableName="oauth_client_details">
+            <column name="client_id" type="VARCHAR(256)">
+                <constraints  nullable="false" primaryKey="true" primaryKeyName="pk_oauth_client_id"/>
+            </column>
+            <column name="resource_ids" type="VARCHAR(256)">
+                <constraints nullable="false" />
+            </column>
+            <column name="client_secret" type="VARCHAR(256)" />
+            <column name="scope" type="VARCHAR(256)" />
+            <column name="authorized_grant_types" type="VARCHAR(256)" />
+            <column name="web_server_redirect_uri" type="VARCHAR(256)" />
+            <column name="authorities" type="VARCHAR(256)" />
+            <column name="access_token_validity" type="INTEGER" />
+            <column name="refresh_token_validity" type="INTEGER" />
+            <column name="additional_information" type="VARCHAR(4096)" />
+            <column name="autoapprove" type="VARCHAR(256)" />
+        </createTable>
+
+        <createTable tableName="oauth_client_token">
+            <column name="token_id" type="VARCHAR(256)">
+                <constraints nullable="false" />
+            </column>
+            <column name="token" type="LONGVARBINARY" >
+                <constraints nullable="true" />
+            </column>
+            <column name="authentication_id" type="VARCHAR(256)" >
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_authentication_id" />
+            </column>
+            <column name="user_name" type="VARCHAR(256)" />
+            <column name="client_id" type="VARCHAR(256)" />
+        </createTable>
+
+        <createTable tableName="oauth_access_token" >
+            <column name="token_id" type="VARCHAR(256)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_token_id" />
+            </column>
+            <column name="token" type="LONGVARBINARY" />
+            <column name="authentication_id" type="VARCHAR(256)" />
+            <column name="user_name" type="VARCHAR(256)" />
+            <column name="client_id" type="VARCHAR(256)" />
+            <column name="authentication" type="LONGVARBINARY" />
+            <column name="refresh_token" type="VARCHAR(256)" />
+        </createTable>
+
+        <createTable tableName="oauth_refresh_token">
+            <column name="token_id" type="VARCHAR(256)" />
+            <column name="token" type="LONGVARBINARY" />
+            <column name="authentication" type="LONGVARBINARY" />
+        </createTable>
+
+        <createTable tableName="oauth_code">
+            <column name="code" type="VARCHAR(256)" />
+            <column name="authentication" type="LONGVARBINARY" />
+        </createTable>
+
+        <createTable tableName="oauth_approvals">
+            <column name="user-id" type="VARCHAR(256)" />
+            <column name="client_id" type="VARCHAR(256)" />
+            <column name="scope" type="VARCHAR(256)" />
+            <column name="status" type="VARCHAR(256)" />
+            <column name="expires_at" type="TIMESTAMP" />
+            <column name="last_modified_at" type="TIMESTAMP" />
+        </createTable>
+
+        <createTable tableName="client_details">
+            <column name="app_id" type="VARCHAR(256)">
+                <constraints primaryKey="true" primaryKeyName="pk_oauth_client_app_id" />
+            </column>
+            <column name="resource_ids" type="VARCHAR(256)" />
+            <column name="app_secret" type="VARCHAR(256)" />
+            <column name="scope" type="VARCHAR(256)" />
+            <column name="grant_type" type="VARCHAR(256)" />
+            <column name="redirect_rrl" type="VARCHAR(256)" />
+            <column name="authorities" type="VARCHAR(256)" />
+            <column name="access_token_validity" type="INTEGER" />
+            <column name="refresh_token_validity" type="INTEGER" />
+            <column name="additional_information" type="VARCHAR(4096)" />
+            <column name="autoapprove" type="VARCHAR(256)" />
+        </createTable>
+    </changeSet>
+
+    <changeSet id="create-table-20201109-0002" author="vista yih" >
+        <insert tableName="oauth_client_details">
+            <column name="client_id" value="client" />
+            <column name="client_secret" value="$2a$10$ISeBd.V91Aqbu.S6pRXlsOasxCatrfk8O3UT5Ph12d6g2xppT9XKK" />
+            <column name="resource_ids" value="blog_root" />
+            <column name="scope" value="profile,email,phone" />
+            <column name="authorized_grant_types" value="authorization_code,implicit,client_credentials" />
+            <column name="web_server_redirect_uri" value="http://localhost:8080/login/oauth2/code/authorizationserver" />
+            <column name="authorities" value="ADMIN" />
+            <column name="access_token_validity" valueNumeric="7200" />
+            <column name="refresh_token_validity" valueNumeric="72000" />
+            <column name="additional_information" value="{}" />
+            <column name="autoapprove" value="profile" />
+        </insert>
+    </changeSet>
+</databaseChangeLog>

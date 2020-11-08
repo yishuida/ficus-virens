@@ -11,7 +11,7 @@ import java.util.concurrent.atomic.AtomicLong;
  * @date 2019/12/19
  */
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+//@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/api/v1")
 public class UserController {
     private static final String template = "Hello, %s!";
