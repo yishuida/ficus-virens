@@ -113,22 +113,22 @@
         <insert tableName="blog_sys_user">
             <column name="id" valueNumeric="1"/>
             <column name="username" value="admin" />
-            <column name="password" value="123456"/>
+            <column name="password" value="$2a$10$6CIKw5iftyfW3amkZ105KOmKmzG4i9HFYDP11ROPeC8vJY5MEDRSu"/>
         </insert>
         <insert tableName="blog_sys_user">
             <column name="id" valueNumeric="2"/>
             <column name="username" value="vista yih" />
-            <column name="password" value="123456"/>
+            <column name="password" value="$2a$10$6CIKw5iftyfW3amkZ105KOmKmzG4i9HFYDP11ROPeC8vJY5MEDRSu"/>
         </insert>
         <insert tableName="blog_sys_user">
             <column name="id" valueNumeric="3"/>
             <column name="username" value="test" />
-            <column name="password" value="123456"/>
+            <column name="password" value="$2a$10$6CIKw5iftyfW3amkZ105KOmKmzG4i9HFYDP11ROPeC8vJY5MEDRSu"/>
         </insert>
         <insert tableName="blog_sys_user">
             <column name="id" valueNumeric="4"/>
             <column name="username" value="test2" />
-            <column name="password" value="123456"/>
+            <column name="password" value="$2a$10$6CIKw5iftyfW3amkZ105KOmKmzG4i9HFYDP11ROPeC8vJY5MEDRSu"/>
         </insert>
 
         <insert tableName="blog_sys_user_info">
@@ -139,19 +139,19 @@
 
         <insert tableName="blog_sys_role">
             <column name="id" valueNumeric="1" />
-            <column name="role_name" value="administrator" />
+            <column name="role_name" value="ROLE_ADMIN" />
         </insert>
         <insert tableName="blog_sys_role">
             <column name="id" valueNumeric="2" />
-            <column name="role_name" value="author" />
+            <column name="role_name" value="ROLE_AUTHOR" />
         </insert>
         <insert tableName="blog_sys_role">
             <column name="id" valueNumeric="3" />
-            <column name="role_name" value="visitor" />
+            <column name="role_name" value="ROLE_VISITOR" />
         </insert>
         <insert tableName="blog_sys_role">
             <column name="id" valueNumeric="4" />
-            <column name="role_name" value="test" />
+            <column name="role_name" value="ROLE_TEST" />
         </insert>
 
         <insert tableName="blog_sys_user_role">

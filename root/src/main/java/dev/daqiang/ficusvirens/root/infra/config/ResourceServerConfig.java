@@ -15,8 +15,7 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Res
  * Created on 2020/11/7
  * Package dev.daqiang.ficusvirens.root.infra.config in ficus-virens
  */
-@Configuration
-@EnableResourceServer
+
 public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
     private static final Logger logger = LoggerFactory.getLogger(ResourceServerConfig.class);
 

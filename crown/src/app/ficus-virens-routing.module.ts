@@ -5,6 +5,8 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
 import {IndexComponent} from './pages/index/index.component';
 import {TimeLineComponent} from './pages/time-line/time-line.component';
 import {AboutMeComponent} from './pages/about-me/about-me.component';
+import { HttpClientModule } from '@angular/common/http';
+import { OAuthModule } from 'angular-oauth2-oidc';
 
 const appRoutes: Routes = [
   { path: 'index', component: IndexComponent },
@@ -17,6 +19,8 @@ const appRoutes: Routes = [
 @NgModule({
   imports: [
     CommonModule,
+    HttpClientModule,
+    OAuthModule.forRoot(),
     RouterModule.forRoot(appRoutes),
   ],
   exports: [

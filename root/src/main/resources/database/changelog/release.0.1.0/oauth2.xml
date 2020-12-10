@@ -92,13 +92,13 @@
             <column name="client_secret" value="$2a$10$ISeBd.V91Aqbu.S6pRXlsOasxCatrfk8O3UT5Ph12d6g2xppT9XKK" />
             <column name="resource_ids" value="blog_root" />
             <column name="scope" value="profile,email,phone" />
-            <column name="authorized_grant_types" value="authorization_code,implicit,client_credentials" />
-            <column name="web_server_redirect_uri" value="http://localhost:8080/login/oauth2/code/authorizationserver" />
-            <column name="authorities" value="ADMIN" />
+            <column name="authorized_grant_types" value="authorization_code,implicit,client_credentials,password,refresh_token" />
+            <column name="web_server_redirect_uri" value="http://localhost:4200" />
+            <column name="authorities" value="" />
             <column name="access_token_validity" valueNumeric="7200" />
             <column name="refresh_token_validity" valueNumeric="72000" />
             <column name="additional_information" value="{}" />
-            <column name="autoapprove" value="profile" />
+            <column name="autoapprove" value="" />
         </insert>
     </changeSet>
 </databaseChangeLog>

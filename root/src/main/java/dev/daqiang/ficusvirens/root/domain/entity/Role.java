@@ -17,7 +17,7 @@ public class Role extends BaseEntity {
 
     private String roleName;
 
-    private List<Permission> permissions;
+    //private List<Permission> permissions;
 
     public Role(String roleName) {
         this.roleName = roleName;

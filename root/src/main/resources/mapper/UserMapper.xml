@@ -59,7 +59,7 @@
         WHERE id=#{id}
     </select>
 
-    <select id="selectByUsername" resultMap="userBaseResultMap">
+    <select id="selectByUsername" resultMap="userResultMap">
         SELECT
         <include refid="userColumns" >
             <property name="alias" value="u"/>
