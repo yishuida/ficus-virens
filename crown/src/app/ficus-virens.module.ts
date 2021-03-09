@@ -11,7 +11,11 @@ import { TimeLineComponent } from './pages/time-line/time-line.component';
 import { IndexComponent } from './pages/index/index.component';
 import {DashboardComponent} from './pages/dashboard/dashboard.component';
 import { TopBarComponent } from './shared/top-bar/top-bar.component';
-import {MatButtonModule, MatGridListModule, MatIconModule, MatListModule, MatToolbarModule} from '@angular/material';
+import { MatButtonModule } from '@angular/material/button';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import {NavbarComponent} from './shared/navbar/navbar.component';
 import { FooterComponent } from './shared/footer/footer.component';
 

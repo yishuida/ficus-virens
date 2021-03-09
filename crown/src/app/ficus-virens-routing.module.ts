@@ -21,7 +21,7 @@ const appRoutes: Routes = [
     CommonModule,
     HttpClientModule,
     OAuthModule.forRoot(),
-    RouterModule.forRoot(appRoutes),
+    RouterModule.forRoot(appRoutes, { relativeLinkResolution: 'legacy' }),
   ],
   exports: [
     RouterModule

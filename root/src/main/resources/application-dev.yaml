@@ -1,7 +1,7 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://${MYSQL_HOST:192.168.247.12}:${MYSQL_PORT:3306}/ficus_virens?characterEncoding=utf8&useSSL=false
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:${MYSQL_PORT:3306}/ficus_virens?characterEncoding=utf8&useSSL=false
     username: ${MYSQL_USER:root}
     password: ${MYSQL_PASSWORD:yishuida}
   liquibase:
