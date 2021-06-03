@@ -5,5 +5,9 @@
   <mat-grid-tile colspan="5">1</mat-grid-tile>
 </mat-grid-list>
 
+<div *ngIf="!givenName">
+  <button (click)="login()">Login</button>
+</div>
 
+<button (click)="printHello()" >Print</button>
 <app-footer></app-footer>

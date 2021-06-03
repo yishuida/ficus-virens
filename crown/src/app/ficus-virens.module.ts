@@ -14,6 +14,8 @@ import { TopBarComponent } from './shared/top-bar/top-bar.component';
 import {MatButtonModule, MatGridListModule, MatIconModule, MatListModule, MatToolbarModule} from '@angular/material';
 import {NavbarComponent} from './shared/navbar/navbar.component';
 import { FooterComponent } from './shared/footer/footer.component';
+import { OAuthModule } from 'angular-oauth2-oidc';
+
 
 @NgModule({
   declarations: [
@@ -37,6 +39,7 @@ import { FooterComponent } from './shared/footer/footer.component';
     MatIconModule,
     MatButtonModule,
     MatGridListModule,
+    OAuthModule.forRoot()
   ],
   providers: [],
   bootstrap: [FicusVirensApp]

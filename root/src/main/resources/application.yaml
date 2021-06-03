@@ -11,5 +11,17 @@ mybatis:
 
   mapper-locations: classpath:mapper/*.xml
 
-
-
+keycloak:
+  realm: dev
+  auth-server-url: https://iam.yidaqiang.com/auth/
+  ssl-required: none
+  resource: spring-boot-dev
+  credentials:
+    secret: 37e8977a-c2ac-41dc-8a7f-a703438e7d32
+  #use-resource-role-mappings: true
+  securityConstraints:
+    - authRoles:
+        - dev-role
+    - securityCollections:
+      - name: "dev role"
+        patterns: "/api/v1/*"
