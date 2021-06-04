@@ -43,6 +43,12 @@ public class UserMapperTest {
     }
 
     @Test
+    public void selectByUsernameTest() {
+        User user = mapper.selectByUsername("admin");
+        System.out.println(user);
+    }
+
+    @Test
     @Transactional
     public void deleteTest() {
         mapper.deleteById(4L);

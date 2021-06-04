@@ -10,6 +10,8 @@ spring:
 
 logging:
   level:
-    dev.daqiang.blog.infra.mapper: debug
+    dev:
+      daqiang: debug
     org:
       springframework: debug
+      mybatis: debug

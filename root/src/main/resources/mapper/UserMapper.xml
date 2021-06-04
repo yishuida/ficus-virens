@@ -11,7 +11,7 @@
     </resultMap>
 
     <resultMap id="userResultMap" type="dev.daqiang.ficusvirens.root.domain.entity.User" extends="userBaseResultMap">
-        <collection property="roles" ofType="dev.daqiang.ficusvirens.root.domain.entity.Role" fetchType="lazy" column="{userId=id}"
+        <collection property="roles" ofType="dev.daqiang.ficusvirens.root.domain.entity.Role" fetchType="eager" column="{userId=id}"
                     select="dev.daqiang.ficusvirens.root.infra.mapper.RoleMapper.selectByUserId" javaType="ArrayList">
         </collection>
     </resultMap>
