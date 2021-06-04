@@ -1,7 +1,6 @@
 package dev.daqiang.ficusvirens.root.api.v1;
 
 import dev.daqiang.ficusvirens.root.domain.entity.Post;
-import org.codehaus.jackson.annotate.JsonTypeInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;

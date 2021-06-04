@@ -69,7 +69,12 @@ public class User extends BaseEntity implements UserDetails, Serializable {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         List<GrantedAuthority> authorities = new ArrayList<>();
+        if (this.roles == null) {
+            System.out.println("role is null");
+            return null;
+        }
         for (Role role : this.roles) {
+            System.out.println("ydq log role name" + role.getRoleName());
             authorities.add(new SimpleGrantedAuthority(role.getRoleName()));
         }
         return authorities;

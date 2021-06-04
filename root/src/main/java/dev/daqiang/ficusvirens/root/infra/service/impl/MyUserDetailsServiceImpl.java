@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
  * Package dev.daqiang.ficusvirens.root.infra.service.impl in root
  */
 @Service
+
 public class MyUserDetailsServiceImpl implements UserDetailsService {
 
     @Autowired
@@ -23,7 +24,9 @@ public class MyUserDetailsServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        System.out.println("username: " + username);
         User user = userMapper.selectByUsername(username);
+        System.out.println("User: " + user);
         if (user == null) {
             throw new UsernameNotFoundException("User isn't existing.");
         }

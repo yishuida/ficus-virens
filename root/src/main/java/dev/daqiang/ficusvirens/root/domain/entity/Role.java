@@ -42,6 +42,7 @@ public class Role extends BaseEntity implements Serializable {
         return Objects.hash(id, roleName);
     }
 
+    @Override
     public String toString() {
         return this.roleName;
     }

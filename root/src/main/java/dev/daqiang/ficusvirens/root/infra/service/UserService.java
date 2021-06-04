@@ -29,4 +29,8 @@ public interface UserService {
     Integer deleteUserById();
 
     Integer updateUserInfo(UserInfo userInfo);
+
+    boolean existsByUsername(String username);
+
+    boolean existsByEmail(String email);
 }
