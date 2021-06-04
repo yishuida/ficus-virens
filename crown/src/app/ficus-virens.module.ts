@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';            // <-- required
 
 import { FicusVirensRoutingModule } from './ficus-virens-routing.module';
 import { FicusVirensApp } from './ficus-virens-app';
@@ -18,7 +19,11 @@ import { MatListModule } from '@angular/material/list';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import {NavbarComponent} from './shared/navbar/navbar.component';
 import { FooterComponent } from './shared/footer/footer.component';
-import { OAuthModule } from 'angular-oauth2-oidc';
+import { authInterceptorProviders } from './_helpers/auth.interceptor';
+import {LoginComponent} from './login/login.component';
+import {BoardAdminComponent} from './board-admin/board-admin.component';
+import {ProfileComponent} from './profile/profile.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -32,6 +37,9 @@ import { OAuthModule } from 'angular-oauth2-oidc';
     TopBarComponent,
     NavbarComponent,
     FooterComponent,
+    LoginComponent,
+    BoardAdminComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,8 +51,10 @@ import { OAuthModule } from 'angular-oauth2-oidc';
     MatIconModule,
     MatButtonModule,
     MatGridListModule,
+    CommonModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [authInterceptorProviders],
   bootstrap: [FicusVirensApp]
 })
 export class FicusVirensModule { }

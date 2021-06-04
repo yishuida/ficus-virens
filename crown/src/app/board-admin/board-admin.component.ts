@@ -1,19 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import {UserService} from '../../_services/user.service';
+import {UserService} from '../_services/user.service';
 
 @Component({
-  selector: 'app-index',
-  templateUrl: './index.component.html',
-  styleUrls: ['./index.component.css']
+  selector: 'app-board-admin',
+  templateUrl: './board-admin.component.html',
+  styleUrls: ['./board-admin.component.css']
 })
-export class IndexComponent implements OnInit {
+export class BoardAdminComponent implements OnInit {
 
   content?: string;
 
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {
-    this.userService.getPublicContent().subscribe(
+    this.userService.getAdminBoard().subscribe(
       data => {
         this.content = data;
       },
@@ -22,4 +22,6 @@ export class IndexComponent implements OnInit {
       }
     );
   }
+
+
 }
