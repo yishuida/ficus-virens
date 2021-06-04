@@ -11,4 +11,7 @@ mybatis:
 
   mapper-locations: classpath:mapper/*.xml
 
-
+bezkoder:
+  app:
+    jwtSecret: bezKoderSecretKey
+    jwtExpirationMs: 86400000

@@ -2,6 +2,7 @@ package dev.daqiang.ficusvirens.root.domain.entity;
 
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 
@@ -11,13 +12,13 @@ import java.util.Objects;
  * @date 2019/12/19
  */
 @Data
-public class Role extends BaseEntity {
+public class Role extends BaseEntity implements Serializable {
 
     private Long id;
 
     private String roleName;
 
-    private List<Permission> permissions;
+    //private List<Permission> permissions;
 
     public Role(String roleName) {
         this.roleName = roleName;
@@ -39,5 +40,10 @@ public class Role extends BaseEntity {
     @Override
     public int hashCode() {
         return Objects.hash(id, roleName);
+    }
+
+    @Override
+    public String toString() {
+        return this.roleName;
     }
 }

@@ -64,4 +64,14 @@ public class UserServiceImpl implements UserService {
     public Integer updateUserInfo(UserInfo userInfo) {
         return null;
     }
+
+    @Override
+    public boolean existsByUsername(String username) {
+        return true;
+    }
+
+    @Override
+    public boolean existsByEmail(String email) {
+        return false;
+    }
 }

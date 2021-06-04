@@ -6,4 +6,6 @@
 
     <include file="classpath:database/changelog/release.0.1.0/rbac.xml" />
     <include file="classpath:database/changelog/release.0.1.0/post.xml" />
+    <include file="classpath:database/changelog/release.0.1.0/oauth2.xml" />
+
 </databaseChangeLog>

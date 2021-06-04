@@ -6,6 +6,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -20,6 +21,9 @@ public class UserServiceImplTest {
 
     @Autowired
     UserService userService;
+
+    @Autowired
+    PasswordEncoder passwordEncoder;
 
     @Test
     public void findAllUser() {
@@ -63,4 +67,10 @@ public class UserServiceImplTest {
     @Test
     public void updateUserInfo() {
     }
+
+    @Test
+    public void password() {
+        System.out.println(passwordEncoder.encode("123456"));
+    }
+
 }

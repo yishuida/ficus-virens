@@ -1,8 +1,8 @@
-import { TestBed, async } from '@angular/core/testing';
+import { TestBed, waitForAsync } from '@angular/core/testing';
 import { FicusVirensApp } from './ficus-virens-app';
 
 describe('FicusVirensApp', () => {
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [
         FicusVirensApp

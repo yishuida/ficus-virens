@@ -11,6 +11,12 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = true)
 @Data
 public class Post extends BaseEntity {
+
+    public Post(String name, String title, String context) {
+        this.postName = name;
+        this.title = title;
+        this.content = context;
+    }
     private Long id;
 
     private String postName;

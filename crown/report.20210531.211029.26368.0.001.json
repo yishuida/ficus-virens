@@ -1,0 +1,558 @@
+
+{
+  "header": {
+    "reportVersion": 1,
+    "event": "Allocation failed - JavaScript heap out of memory",
+    "trigger": "FatalError",
+    "filename": "report.20210531.211029.26368.0.001.json",
+    "dumpEventTime": "2021-05-31T21:10:29Z",
+    "dumpEventTimeStamp": "1622466629501",
+    "processId": 26368,
+    "cwd": "C:\\Users\\yidaq\\project\\vista-yih\\ficus-virens\\crown",
+    "commandLine": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\yidaq\\AppData\\Local\\JetBrains\\Toolbox\\apps\\WebStorm\\ch-0\\211.7142.46\\plugins\\JavaScriptLanguage\\jsLanguageServicesImpl\\js-language-service.js",
+      "-id=1622307765486",
+      "-debug-name=typescript"
+    ],
+    "nodejsVersion": "v12.16.1",
+    "wordSize": 64,
+    "arch": "x64",
+    "platform": "win32",
+    "componentVersions": {
+      "node": "12.16.1",
+      "v8": "7.8.279.23-node.31",
+      "uv": "1.34.0",
+      "zlib": "1.2.11",
+      "brotli": "1.0.7",
+      "ares": "1.15.0",
+      "modules": "72",
+      "nghttp2": "1.40.0",
+      "napi": "5",
+      "llhttp": "2.0.4",
+      "http_parser": "2.9.3",
+      "openssl": "1.1.1d",
+      "cldr": "35.1",
+      "icu": "64.2",
+      "tz": "2019c",
+      "unicode": "12.1"
+    },
+    "release": {
+      "name": "node",
+      "lts": "Erbium",
+      "headersUrl": "https://nodejs.org/download/release/v12.16.1/node-v12.16.1-headers.tar.gz",
+      "sourceUrl": "https://nodejs.org/download/release/v12.16.1/node-v12.16.1.tar.gz",
+      "libUrl": "https://nodejs.org/download/release/v12.16.1/win-x64/node.lib"
+    },
+    "osName": "Windows_NT",
+    "osRelease": "10.0.19041",
+    "osVersion": "Windows 10 Pro",
+    "osMachine": "x86_64",
+    "cpus": [
+      {
+        "model": "AMD Ryzen 7 3700X 8-Core Processor             ",
+        "speed": 3600,
+        "user": 2546218,
+        "nice": 0,
+        "sys": 9213984,
+        "idle": 176250968,
+        "irq": 1478328
+      },
+      {
+        "model": "AMD Ryzen 7 3700X 8-Core Processor             ",
+        "speed": 3600,
+        "user": 1104546,
+        "nice": 0,
+        "sys": 6694015,
+        "idle": 180212640,
+        "irq": 26593
+      },
+      {
+        "model": "AMD Ryzen 7 3700X 8-Core Processor             ",
+        "speed": 3600,
+        "user": 5275921,
+        "nice": 0,
+        "sys": 6875453,
+        "idle": 175859843,
+        "irq": 48906
+      },
+      {
+        "model": "AMD Ryzen 7 3700X 8-Core Processor             ",
+        "speed": 3600,
+        "user": 984843,
+        "nice": 0,
+        "sys": 5900843,
+        "idle": 181125312,
+        "irq": 26875
+      },
+      {
+        "model": "AMD Ryzen 7 3700X 8-Core Processor             ",
+        "speed": 3600,
+        "user": 2537078,
+        "nice": 0,
+        "sys": 5724593,
+        "idle": 179749296,
+        "irq": 37484
+      },
+      {
+        "model": "AMD Ryzen 7 3700X 8-Core Processor             ",
+        "speed": 3600,
+        "user": 1599906,
+        "nice": 0,
+        "sys": 8257859,
+        "idle": 178153203,
+        "irq": 28359
+      },
+      {
+        "model": "AMD Ryzen 7 3700X 8-Core Processor             ",
+        "speed": 3600,
+        "user": 2317421,
+        "nice": 0,
+        "sys": 5868343,
+        "idle": 179825187,
+        "irq": 35718
+      },
+      {
+        "model": "AMD Ryzen 7 3700X 8-Core Processor             ",
+        "speed": 3600,
+        "user": 1743859,
+        "nice": 0,
+        "sys": 7016421,
+        "idle": 179250687,
+        "irq": 27140
+      },
+      {
+        "model": "AMD Ryzen 7 3700X 8-Core Processor             ",
+        "speed": 3600,
+        "user": 3444906,
+        "nice": 0,
+        "sys": 7466453,
+        "idle": 177099593,
+        "irq": 32390
+      },
+      {
+        "model": "AMD Ryzen 7 3700X 8-Core Processor             ",
+        "speed": 3600,
+        "user": 867515,
+        "nice": 0,
+        "sys": 4941109,
+        "idle": 182202328,
+        "irq": 20187
+      },
+      {
+        "model": "AMD Ryzen 7 3700X 8-Core Processor             ",
+        "speed": 3600,
+        "user": 5536312,
+        "nice": 0,
+        "sys": 5858390,
+        "idle": 176616265,
+        "irq": 32078
+      },
+      {
+        "model": "AMD Ryzen 7 3700X 8-Core Processor             ",
+        "speed": 3600,
+        "user": 1088062,
+        "nice": 0,
+        "sys": 4844484,
+        "idle": 182078406,
+        "irq": 17296
+      },
+      {
+        "model": "AMD Ryzen 7 3700X 8-Core Processor             ",
+        "speed": 3600,
+        "user": 2505531,
+        "nice": 0,
+        "sys": 4775937,
+        "idle": 180729500,
+        "irq": 35406
+      },
+      {
+        "model": "AMD Ryzen 7 3700X 8-Core Processor             ",
+        "speed": 3600,
+        "user": 2177187,
+        "nice": 0,
+        "sys": 7250250,
+        "idle": 178583515,
+        "irq": 19609
+      },
+      {
+        "model": "AMD Ryzen 7 3700X 8-Core Processor             ",
+        "speed": 3600,
+        "user": 2309093,
+        "nice": 0,
+        "sys": 3746765,
+        "idle": 181955109,
+        "irq": 21984
+      },
+      {
+        "model": "AMD Ryzen 7 3700X 8-Core Processor             ",
+        "speed": 3600,
+        "user": 3002093,
+        "nice": 0,
+        "sys": 7684484,
+        "idle": 177324390,
+        "irq": 21812
+      }
+    ],
+    "networkInterfaces": [
+      {
+        "name": "VirtualBox Host-Only Network",
+        "internal": false,
+        "mac": "0a:00:27:00:00:15",
+        "address": "fe80::ddf0:eacd:3604:3dbc",
+        "netmask": "ffff:ffff:ffff:ffff::",
+        "family": "IPv6",
+        "scopeid": 21
+      },
+      {
+        "name": "VirtualBox Host-Only Network",
+        "internal": false,
+        "mac": "0a:00:27:00:00:15",
+        "address": "192.168.56.1",
+        "netmask": "255.255.255.0",
+        "family": "IPv4"
+      },
+      {
+        "name": "以太网",
+        "internal": false,
+        "mac": "00:d8:61:7a:f0:93",
+        "address": "fe80::990e:44b2:9c36:5585",
+        "netmask": "ffff:ffff:ffff:ffff::",
+        "family": "IPv6",
+        "scopeid": 17
+      },
+      {
+        "name": "以太网",
+        "internal": false,
+        "mac": "00:d8:61:7a:f0:93",
+        "address": "10.0.0.38",
+        "netmask": "255.255.255.0",
+        "family": "IPv4"
+      },
+      {
+        "name": "VMware Network Adapter VMnet1",
+        "internal": false,
+        "mac": "00:50:56:c0:00:01",
+        "address": "fe80::4448:72d:3741:5aab",
+        "netmask": "ffff:ffff:ffff:ffff::",
+        "family": "IPv6",
+        "scopeid": 12
+      },
+      {
+        "name": "VMware Network Adapter VMnet1",
+        "internal": false,
+        "mac": "00:50:56:c0:00:01",
+        "address": "192.168.117.1",
+        "netmask": "255.255.255.0",
+        "family": "IPv4"
+      },
+      {
+        "name": "VMware Network Adapter VMnet8",
+        "internal": false,
+        "mac": "00:50:56:c0:00:08",
+        "address": "fe80::6d4c:e8bf:4601:2135",
+        "netmask": "ffff:ffff:ffff:ffff::",
+        "family": "IPv6",
+        "scopeid": 11
+      },
+      {
+        "name": "VMware Network Adapter VMnet8",
+        "internal": false,
+        "mac": "00:50:56:c0:00:08",
+        "address": "192.168.247.1",
+        "netmask": "255.255.255.0",
+        "family": "IPv4"
+      },
+      {
+        "name": "ZeroTier One [565799d8f6a98633]",
+        "internal": false,
+        "mac": "32:9b:bc:1f:15:f7",
+        "address": "fe80::5959:77ab:73cb:4cbf",
+        "netmask": "ffff:ffff:ffff:ffff::",
+        "family": "IPv6",
+        "scopeid": 7
+      },
+      {
+        "name": "ZeroTier One [565799d8f6a98633]",
+        "internal": false,
+        "mac": "32:9b:bc:1f:15:f7",
+        "address": "10.10.23.196",
+        "netmask": "255.255.255.0",
+        "family": "IPv4"
+      },
+      {
+        "name": "Loopback Pseudo-Interface 1",
+        "internal": true,
+        "mac": "00:00:00:00:00:00",
+        "address": "::1",
+        "netmask": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+        "family": "IPv6",
+        "scopeid": 0
+      },
+      {
+        "name": "Loopback Pseudo-Interface 1",
+        "internal": true,
+        "mac": "00:00:00:00:00:00",
+        "address": "127.0.0.1",
+        "netmask": "255.0.0.0",
+        "family": "IPv4"
+      }
+    ],
+    "host": "DESKTOP-BQ9IMFK"
+  },
+  "javascriptStack": {
+    "message": "No stack.",
+    "stack": [
+      "Unavailable."
+    ]
+  },
+  "nativeStack": [
+    {
+      "pc": "0x00007ff72c4519f9",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff72c455e1c",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff72c454dd8",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff72c5534cb",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff72cd69f4e",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff72cd52021",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff72cc1e57c",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff72cc26521",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff72cc1bb13",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff72cc1a184",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff72cc3b36d",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff72c9a0c51",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff72d1b4ddd",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff72d1b5ed3",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000001cf3bd6e3a8",
+      "symbol": ""
+    }
+  ],
+  "javascriptHeap": {
+    "totalMemory": 138850304,
+    "totalCommittedMemory": 138850304,
+    "usedMemory": 135966464,
+    "availableMemory": 2062189248,
+    "memoryLimit": 2197815296,
+    "heapSpaces": {
+      "read_only_space": {
+        "memorySize": 262144,
+        "committedMemory": 262144,
+        "capacity": 32808,
+        "used": 32808,
+        "available": 0
+      },
+      "new_space": {
+        "memorySize": 1048576,
+        "committedMemory": 1048576,
+        "capacity": 1047456,
+        "used": 1047448,
+        "available": 8
+      },
+      "old_space": {
+        "memorySize": 112607232,
+        "committedMemory": 112607232,
+        "capacity": 112369064,
+        "used": 111271968,
+        "available": 1097096
+      },
+      "code_space": {
+        "memorySize": 3051520,
+        "committedMemory": 3051520,
+        "capacity": 2897984,
+        "used": 1997568,
+        "available": 900416
+      },
+      "map_space": {
+        "memorySize": 790528,
+        "committedMemory": 790528,
+        "capacity": 789040,
+        "used": 609760,
+        "available": 179280
+      },
+      "large_object_space": {
+        "memorySize": 21041152,
+        "committedMemory": 21041152,
+        "capacity": 21004128,
+        "used": 21004128,
+        "available": 0
+      },
+      "code_large_object_space": {
+        "memorySize": 49152,
+        "committedMemory": 49152,
+        "capacity": 2784,
+        "used": 2784,
+        "available": 0
+      },
+      "new_large_object_space": {
+        "memorySize": 0,
+        "committedMemory": 0,
+        "capacity": 1047456,
+        "used": 0,
+        "available": 1047456
+      }
+    }
+  },
+  "resourceUsage": {
+    "userCpuSeconds": 56.984,
+    "kernelCpuSeconds": 29.671,
+    "cpuConsumptionPercent": 0.054547,
+    "maxRss": 733372416,
+    "pageFaults": {
+      "IORequired": 1596090,
+      "IONotRequired": 0
+    },
+    "fsActivity": {
+      "reads": 14885,
+      "writes": 3735
+    }
+  },
+  "libuv": [
+  ],
+  "environmentVariables": {
+    "=::": "::\\",
+    "ALLUSERSPROFILE": "C:\\ProgramData",
+    "APPDATA": "C:\\Users\\yidaq\\AppData\\Roaming",
+    "ChocolateyInstall": "C:\\ProgramData\\chocolatey",
+    "ChocolateyLastPathUpdate": "132297042779637726",
+    "CLASSPATH": "C:\\Program Files\\Java\\jdk1.8.0_181\\lib\\dt.jar;C:\\Program Files\\Java\\jdk1.8.0_181\\lib\\tools.jar",
+    "CommonProgramFiles": "C:\\Program Files\\Common Files",
+    "CommonProgramFiles(x86)": "C:\\Program Files (x86)\\Common Files",
+    "CommonProgramW6432": "C:\\Program Files\\Common Files",
+    "COMPUTERNAME": "DESKTOP-BQ9IMFK",
+    "ComSpec": "C:\\WINDOWS\\system32\\cmd.exe",
+    "DriverData": "C:\\Windows\\System32\\Drivers\\DriverData",
+    "FPS_BROWSER_APP_PROFILE_STRING": "Internet Explorer",
+    "FPS_BROWSER_USER_PROFILE_STRING": "Default",
+    "GoLand": "C:\\Program Files\\JetBrains\\GoLand 2020.2.3\\bin;",
+    "GOPATH": "C:\\Users\\yidaq\\go",
+    "HOMEDRIVE": "C:",
+    "HOMEPATH": "\\Users\\yidaq",
+    "IDEA_INITIAL_DIRECTORY": "C:\\WINDOWS\\System32",
+    "IntelliJ IDEA": "C:\\Program Files\\JetBrains\\IntelliJ IDEA 2020.2.4\\bin;",
+    "INTEL_DEV_REDIST": "C:\\Program Files (x86)\\Common Files\\Intel\\Shared Libraries\\",
+    "JAVA_HOME": "C:\\Program Files\\Java\\jdk1.8.0_181",
+    "K8S_MASTER": "192.168.247.31",
+    "K8S_MYSQL_PORT": "30306",
+    "K8S_PORTGRES": "30432",
+    "LOCALAPPDATA": "C:\\Users\\yidaq\\AppData\\Local",
+    "LOGONSERVER": "\\\\DESKTOP-BQ9IMFK",
+    "MIC_LD_LIBRARY_PATH": "C:\\Program Files (x86)\\Common Files\\Intel\\Shared Libraries\\compiler\\lib\\mic",
+    "MOZ_PLUGIN_PATH": "C:\\Program Files (x86)\\Foxit Software\\Foxit Reader\\plugins\\",
+    "NUMBER_OF_PROCESSORS": "16",
+    "OneDrive": "C:\\Users\\yidaq\\OneDrive",
+    "OneDriveConsumer": "C:\\Users\\yidaq\\OneDrive",
+    "OS": "Windows_NT",
+    "Path": "C:\\Program Files (x86)\\VMware\\VMware Workstation\\bin\\;C:\\Program Files (x86)\\Common Files\\Intel\\Shared Libraries\\redist\\intel64\\compiler;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\OpenSSH\\;C:\\Program Files\\NVIDIA Corporation\\NVIDIA NvDLISR;C:\\Program Files\\dotnet\\;C:\\Program Files\\Microsoft SQL Server\\130\\Tools\\Binn\\;C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\;C:\\Program Files\\Java\\jdk1.8.0_181\\bin;C:\\Program Files\\Java\\jdk1.8.0_181\\jre\\bin;C:\\Program Files\\nodejs\\;C:\\Program Files\\NVIDIA Corporation\\NVIDIA NGX;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\ProgramData\\chocolatey\\bin;C:\\Program Files (x86)\\ZeroTier\\One\\;C:\\Program Files\\Go\\bin;C:\\Program Files\\Git\\cmd;C:\\Users\\yidaq\\.cargo\\bin;C:\\Users\\yidaq\\scoop\\shims;C:\\Users\\yidaq\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Program Files\\Bandizip\\;C:\\Users\\yidaq\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Program Files\\JetBrains\\PyCharm 2019.1.3\\bin;;C:\\Program Files\\JetBrains\\GoLand 2019.1.1\\bin;C:\\Users\\yidaq\\shortcut;C:\\Program Files\\JetBrains\\GoLand 2020.2.3\\bin;;C:\\Users\\yidaq\\AppData\\Roaming\\npm;C:\\Users\\yidaq\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\yidaq\\go\\bin;C:\\Program Files\\JetBrains\\IntelliJ IDEA 2020.2.4\\bin;;C:\\Program Files\\JetBrains\\RubyMine 2020.2.4\\bin;;C:\\Program Files\\JetBrains\\PyCharm 2020.2.4\\bin;;C:\\Users\\yidaq\\.dotnet\\tools",
+    "PATHEXT": ".COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC",
+    "PROCESSOR_ARCHITECTURE": "AMD64",
+    "PROCESSOR_IDENTIFIER": "AMD64 Family 23 Model 113 Stepping 0, AuthenticAMD",
+    "PROCESSOR_LEVEL": "23",
+    "PROCESSOR_REVISION": "7100",
+    "ProgramData": "C:\\ProgramData",
+    "ProgramFiles": "C:\\Program Files",
+    "ProgramFiles(x86)": "C:\\Program Files (x86)",
+    "ProgramW6432": "C:\\Program Files",
+    "PSModulePath": "C:\\Program Files\\WindowsPowerShell\\Modules;C:\\WINDOWS\\system32\\WindowsPowerShell\\v1.0\\Modules",
+    "PUBLIC": "C:\\Users\\Public",
+    "PyCharm": "C:\\Program Files\\JetBrains\\PyCharm 2020.2.4\\bin;",
+    "RubyMine": "C:\\Program Files\\JetBrains\\RubyMine 2020.2.4\\bin;",
+    "SESSIONNAME": "Console",
+    "SystemDrive": "C:",
+    "SystemRoot": "C:\\WINDOWS",
+    "TEMP": "C:\\Users\\yidaq\\AppData\\Local\\Temp",
+    "TMP": "C:\\Users\\yidaq\\AppData\\Local\\Temp",
+    "TS_TSLINT_ENABLE_WORKSPACE_LIBRARY_EXECUTION": "true",
+    "USERDOMAIN": "DESKTOP-BQ9IMFK",
+    "USERDOMAIN_ROAMINGPROFILE": "DESKTOP-BQ9IMFK",
+    "USERNAME": "yidaq",
+    "USERPROFILE": "C:\\Users\\yidaq",
+    "VBOX_MSI_INSTALL_PATH": "C:\\Program Files\\Oracle\\VirtualBox\\",
+    "windir": "C:\\WINDOWS",
+    "WXDRIVE_START_ARGS": "--wxdrive-setting=0 --disable-gpu --disable-software-rasterizer --enable-features=NetworkServiceInProcess",
+    "__COMPAT_LAYER": "DetectorsAppHealth"
+  },
+  "sharedObjects": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "C:\\WINDOWS\\SYSTEM32\\ntdll.dll",
+    "C:\\WINDOWS\\System32\\KERNEL32.DLL",
+    "C:\\WINDOWS\\System32\\KERNELBASE.dll",
+    "C:\\WINDOWS\\SYSTEM32\\apphelp.dll",
+    "C:\\WINDOWS\\System32\\WS2_32.dll",
+    "C:\\WINDOWS\\System32\\RPCRT4.dll",
+    "C:\\WINDOWS\\SYSTEM32\\dbghelp.dll",
+    "C:\\WINDOWS\\System32\\PSAPI.DLL",
+    "C:\\WINDOWS\\System32\\ucrtbase.dll",
+    "C:\\WINDOWS\\System32\\ADVAPI32.dll",
+    "C:\\WINDOWS\\System32\\msvcrt.dll",
+    "C:\\WINDOWS\\SYSTEM32\\USERENV.dll",
+    "C:\\WINDOWS\\SYSTEM32\\IPHLPAPI.DLL",
+    "C:\\WINDOWS\\System32\\sechost.dll",
+    "C:\\WINDOWS\\System32\\USER32.dll",
+    "C:\\WINDOWS\\System32\\win32u.dll",
+    "C:\\WINDOWS\\System32\\GDI32.dll",
+    "C:\\WINDOWS\\System32\\gdi32full.dll",
+    "C:\\WINDOWS\\System32\\msvcp_win.dll",
+    "C:\\WINDOWS\\System32\\CRYPT32.dll",
+    "C:\\WINDOWS\\System32\\bcrypt.dll",
+    "C:\\WINDOWS\\SYSTEM32\\WINMM.dll",
+    "C:\\WINDOWS\\System32\\IMM32.DLL",
+    "C:\\WINDOWS\\SYSTEM32\\powrprof.dll",
+    "C:\\WINDOWS\\SYSTEM32\\UMPDC.dll",
+    "C:\\WINDOWS\\SYSTEM32\\CRYPTBASE.DLL",
+    "C:\\WINDOWS\\system32\\uxtheme.dll",
+    "C:\\WINDOWS\\System32\\combase.dll",
+    "C:\\WINDOWS\\system32\\mswsock.dll",
+    "C:\\WINDOWS\\SYSTEM32\\kernel.appcore.dll",
+    "C:\\WINDOWS\\System32\\bcryptprimitives.dll",
+    "C:\\WINDOWS\\System32\\NSI.dll",
+    "C:\\WINDOWS\\SYSTEM32\\dhcpcsvc6.DLL",
+    "C:\\WINDOWS\\SYSTEM32\\dhcpcsvc.DLL",
+    "C:\\WINDOWS\\SYSTEM32\\DNSAPI.dll",
+    "C:\\WINDOWS\\system32\\napinsp.dll",
+    "C:\\WINDOWS\\system32\\pnrpnsp.dll",
+    "C:\\WINDOWS\\system32\\wshbth.dll",
+    "C:\\WINDOWS\\system32\\NLAapi.dll",
+    "C:\\WINDOWS\\System32\\winrnr.dll"
+  ]
+}
